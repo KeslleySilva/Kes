@@ -1,0 +1,10 @@
+{
+  "url": "http://localhost:8080/api/calculadora/dados-abertos/aliquota-municipio?codigoMunicipio=3550308&data=2026-06-01",
+  "status": 200,
+  "ms": 2,
+  "avisos": {},
+  "resposta": {
+    "aliquotaReferencia": 0.0
+  },
+  "corpoEnviado": null
+}

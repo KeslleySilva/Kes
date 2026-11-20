@@ -1,0 +1,330 @@
+[
+  {
+    "id": "C01", "grupo": "Cálculo de tributos",
+    "titulo": "2026 (ano-teste) – tributação integral, NF-e",
+    "explicacao": "Em 2026 a calculadora usa automaticamente as alíquotas de referência cadastradas (CBS 0,9% e IBS 0,1%). aliquotasNominais é proibido antes de 2027.",
+    "metodo": "POST", "caminho": "/regime-geral",
+    "corpo": {
+      "id": "C01", "versao": "1.0.0", "dhFatoGerador": "2026-06-10T10:00:00-03:00",
+      "municipio": 3550308, "uf": "SP", "tpDoc": 55,
+      "itens": [{ "numero": 1, "ncm": "84713012", "cst": "000", "cClassTrib": "000001", "baseCalculo": 1000.00, "quantidade": 1, "unidade": "UN" }]
+    }
+  },
+  {
+    "id": "C02", "grupo": "Cálculo de tributos",
+    "titulo": "2027 – alíquotas nominais informadas (tributação integral)",
+    "explicacao": "A partir de 2027 as alíquotas nominais são obrigatórias em cada item e o resultado sai marcado como cálculo simulado (header x-warning-dados-simulados).",
+    "metodo": "POST", "caminho": "/regime-geral",
+    "corpo": {
+      "id": "C02", "versao": "1.0.0", "dhFatoGerador": "2027-03-10T10:00:00-03:00",
+      "municipio": 3550308, "uf": "SP",
+      "itens": [{ "numero": 1, "ncm": "84713012", "cst": "000", "cClassTrib": "000001", "baseCalculo": 1000.00, "quantidade": 1, "unidade": "UN",
+        "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05 } }]
+    }
+  },
+  {
+    "id": "C03", "grupo": "Cálculo de tributos",
+    "titulo": "Cesta básica – redução de 100% (cClassTrib 200003)",
+    "explicacao": "Produtos do Anexo I (alimentação humana) têm alíquota reduzida a zero. A calculadora aplica pRedAliq = 100% e mostra a alíquota efetiva.",
+    "metodo": "POST", "caminho": "/regime-geral",
+    "corpo": {
+      "id": "C03", "versao": "1.0.0", "dhFatoGerador": "2027-03-10T10:00:00-03:00",
+      "municipio": 4314902, "uf": "RS",
+      "itens": [{ "numero": 1, "ncm": "10063021", "cst": "200", "cClassTrib": "200003", "baseCalculo": 100.00, "quantidade": 20, "unidade": "KG",
+        "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05 } }]
+    }
+  },
+  {
+    "id": "C04", "grupo": "Cálculo de tributos",
+    "titulo": "Serviço de educação – redução de 60% (cClassTrib 200028, NBS)",
+    "explicacao": "Serviços são identificados por NBS em vez de NCM. A redução de 60% é aplicada sobre cada alíquota (CBS, IBS UF e IBS Município).",
+    "metodo": "POST", "caminho": "/regime-geral",
+    "corpo": {
+      "id": "C04", "versao": "1.0.0", "dhFatoGerador": "2027-03-10T10:00:00-03:00",
+      "municipio": 4314902, "uf": "RS",
+      "itens": [{ "numero": 1, "nbs": "122011200", "cst": "200", "cClassTrib": "200028", "baseCalculo": 1200.00,
+        "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05 } }]
+    }
+  },
+  {
+    "id": "C05", "grupo": "Cálculo de tributos",
+    "titulo": "Imposto Seletivo – cerveja (IS + CBS/IBS)",
+    "explicacao": "Com o grupo impostoSeletivo, a base de CBS/IBS é derivada: BC(IS) + valor do IS. A alíquota ad valorem do IS é informada em aliquotasNominais.impostoSeletivo.",
+    "metodo": "POST", "caminho": "/regime-geral",
+    "corpo": {
+      "id": "C05", "versao": "1.0.0", "dhFatoGerador": "2027-03-10T10:00:00-03:00",
+      "municipio": 4314902, "uf": "RS",
+      "itens": [{ "numero": 1, "ncm": "22030000", "cst": "000", "cClassTrib": "000001", "quantidade": 12, "unidade": "LT",
+        "impostoSeletivo": { "cst": "000", "cClassTrib": "000001", "baseCalculo": 150.00, "quantidade": 12, "unidade": "LT" },
+        "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05, "impostoSeletivo": { "adValorem": 10.0 } } }]
+    }
+  },
+  {
+    "id": "C06", "grupo": "Cálculo de tributos",
+    "titulo": "Limite atual: monofasia de combustíveis ainda não implementada (620001)",
+    "explicacao": "A calculadora oficial (v1.7.2) responde HTTP 422 \"Classificação tributária em desenvolvimento\" para a tributação monofásica de combustíveis; está no roadmap. Veja o mapa de cobertura para a lista completa do que ainda não é calculado.",
+    "metodo": "POST", "caminho": "/regime-geral",
+    "corpo": {
+      "id": "C06", "versao": "1.0.0", "dhFatoGerador": "2026-03-10T10:00:00-03:00",
+      "municipio": 4314902, "uf": "RS",
+      "itens": [{ "numero": 1, "ncm": "27101259", "cst": "620", "cClassTrib": "620001", "baseCalculo": 200.00, "quantidade": 10, "unidade": "LT" }]
+    }
+  },
+  {
+    "id": "C07", "grupo": "Cálculo de tributos",
+    "titulo": "Diferimento com redução – insumo agropecuário (CST 515)",
+    "explicacao": "No diferimento o imposto é calculado mas o pagamento é postergado: o resultado traz o grupo gDif com o percentual e o valor diferido.",
+    "metodo": "POST", "caminho": "/regime-geral",
+    "corpo": {
+      "id": "C07", "versao": "1.0.0", "dhFatoGerador": "2026-03-10T10:00:00-03:00",
+      "municipio": 4314902, "uf": "RS",
+      "itens": [{ "numero": 1, "ncm": "31010000", "cst": "515", "cClassTrib": "515001", "baseCalculo": 500.00, "quantidade": 1, "unidade": "TON" }]
+    }
+  },
+  {
+    "id": "C08", "grupo": "Cálculo de tributos",
+    "titulo": "Suspensão com tributação regular (CST 550 + grupo tributacaoRegular)",
+    "explicacao": "Quando há desoneração (suspensão), informa-se a tributação que seria aplicável sem ela no grupo tributacaoRegular. A calculadora devolve gTribRegular com os valores hipotéticos.",
+    "metodo": "POST", "caminho": "/regime-geral",
+    "corpo": {
+      "id": "C08", "versao": "1.0.0", "dhFatoGerador": "2026-03-10T10:00:00-03:00",
+      "municipio": 4314902, "uf": "RS", "tpDoc": 55,
+      "itens": [{ "numero": 1, "ncm": "87100000", "cst": "550", "cClassTrib": "550001", "baseCalculo": 200.00, "quantidade": 1, "unidade": "UN",
+        "tributacaoRegular": { "cst": "200", "cClassTrib": "200043" } }]
+    }
+  },
+  {
+    "id": "C09", "grupo": "Cálculo de tributos",
+    "titulo": "Imunidade – exportação de bens e serviços (CST 410)",
+    "explicacao": "Operações imunes ou sem incidência não geram valores de CBS/IBS; o grupo de tributação sai apenas com CST e cClassTrib.",
+    "metodo": "POST", "caminho": "/regime-geral",
+    "corpo": {
+      "id": "C09", "versao": "1.0.0", "dhFatoGerador": "2027-03-10T10:00:00-03:00",
+      "municipio": 4314902, "uf": "RS",
+      "itens": [{ "numero": 1, "ncm": "84713012", "cst": "410", "cClassTrib": "410004", "baseCalculo": 5000.00, "quantidade": 1, "unidade": "UN",
+        "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05 } }]
+    }
+  },
+  {
+    "id": "C10", "grupo": "Cálculo de tributos",
+    "titulo": "Compra governamental – adquirente União (gCompraGov)",
+    "explicacao": "Nas compras governamentais, o IBS e a CBS são redirecionados ao ente comprador por meio do redutor de alíquota (grupo gTribCompraGov).",
+    "metodo": "POST", "caminho": "/regime-geral",
+    "corpo": {
+      "id": "C10", "versao": "1.0.0", "dhFatoGerador": "2027-03-10T10:00:00-03:00",
+      "municipio": 4314902, "uf": "RS",
+      "gCompraGov": { "tpEnteGov": 1, "tpOperGov": 1 },
+      "itens": [{ "numero": 1, "ncm": "84713012", "cst": "000", "cClassTrib": "000001", "baseCalculo": 1000.00, "quantidade": 1, "unidade": "UN",
+        "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05 } }]
+    }
+  },
+  {
+    "id": "C11", "grupo": "Cálculo de tributos",
+    "titulo": "Base de cálculo automática a partir dos componentes da nota (gComponentesBC)",
+    "explicacao": "Em vez de informar baseCalculo, informam-se os valores da nota (produto, frete, seguro, desconto, ICMS...). A calculadora monta a base e calcula.",
+    "metodo": "POST", "caminho": "/regime-geral",
+    "corpo": {
+      "id": "C11", "versao": "1.0.0", "dhFatoGerador": "2027-03-10T10:00:00-03:00",
+      "municipio": 3550308, "uf": "SP", "tpDoc": 55,
+      "itens": [{ "numero": 1, "ncm": "84713012", "cst": "000", "cClassTrib": "000001", "quantidade": 1, "unidade": "UN",
+        "gComponentesBC": { "vProd": 1000.00, "vFrete": 50.00, "vSeg": 20.00, "vDesc": 50.00, "vICMS": 180.00 },
+        "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05 } }]
+    }
+  },
+  {
+    "id": "C12", "grupo": "Cálculo de tributos",
+    "titulo": "Nota com vários itens e totalizadores",
+    "explicacao": "Itens com tratamentos diferentes na mesma operação. O bloco total traz os totalizadores da nota (IBSCBSTot, ISTot, gMono...).",
+    "metodo": "POST", "caminho": "/regime-geral",
+    "corpo": {
+      "id": "C12", "versao": "1.0.0", "dhFatoGerador": "2027-03-10T10:00:00-03:00",
+      "municipio": 4314902, "uf": "RS",
+      "itens": [
+        { "numero": 1, "ncm": "84713012", "cst": "000", "cClassTrib": "000001", "baseCalculo": 1000.00, "quantidade": 1, "unidade": "UN",
+          "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05 } },
+        { "numero": 2, "ncm": "10063021", "cst": "200", "cClassTrib": "200003", "baseCalculo": 100.00, "quantidade": 20, "unidade": "KG",
+          "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05 } },
+        { "numero": 3, "ncm": "22030000", "cst": "000", "cClassTrib": "000001", "quantidade": 12, "unidade": "LT",
+          "impostoSeletivo": { "cst": "000", "cClassTrib": "000001", "baseCalculo": 150.00, "quantidade": 12, "unidade": "LT" },
+          "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05, "impostoSeletivo": { "adValorem": 10.0 } } }
+      ]
+    }
+  },
+  {
+    "id": "C13", "grupo": "Cálculo de tributos",
+    "titulo": "Erro de validação – operação inteira rejeitada (HTTP 422)",
+    "explicacao": "No endpoint /regime-geral, qualquer item inválido rejeita a operação inteira. Aqui a NCM de carne não está vinculada à cClassTrib 200035.",
+    "metodo": "POST", "caminho": "/regime-geral",
+    "corpo": {
+      "id": "C13", "versao": "1.0.0", "dhFatoGerador": "2027-03-10T10:00:00-03:00",
+      "municipio": 4314902, "uf": "RS",
+      "itens": [{ "numero": 1, "ncm": "02013000", "cst": "200", "cClassTrib": "200035", "baseCalculo": 80.00,
+        "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05 } }]
+    }
+  },
+  {
+    "id": "O01", "grupo": "Observabilidade",
+    "titulo": "Cálculo com observabilidade – erro por item sem interromper os demais",
+    "explicacao": "Mesmo com um item inválido a resposta é HTTP 200: cada item tem estadoItem (CALCULADO, CALCULO_SIMULADO, INCONSISTENCIA_ENTRADA, NAO_IMPLEMENTADO, FALHA_TECNICA) e os totais somam só os calculados.",
+    "metodo": "POST", "caminho": "/observabilidade/regime-geral",
+    "corpo": {
+      "id": "O01", "versao": "1.0.0", "dhFatoGerador": "2027-03-10T10:00:00-03:00",
+      "municipio": 4314902, "uf": "RS",
+      "itens": [
+        { "numero": 1, "ncm": "10063021", "cst": "200", "cClassTrib": "200003", "baseCalculo": 100.00, "quantidade": 20, "unidade": "KG",
+          "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05 } },
+        { "numero": 2, "nbs": "122011200", "cst": "200", "cClassTrib": "200028", "baseCalculo": 1200.00,
+          "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05 } },
+        { "numero": 3, "ncm": "02013000", "cst": "200", "cClassTrib": "200035", "baseCalculo": 80.00,
+          "aliquotasNominais": { "cbs": 8.8, "ibsEstadual": 0.05, "ibsMunicipal": 0.05 } }
+      ]
+    }
+  },
+  {
+    "id": "O02", "grupo": "Observabilidade",
+    "titulo": "Descrição de um código de erro",
+    "explicacao": "Explica o significado de um código de erro devolvido pela observabilidade.",
+    "metodo": "GET", "caminho": "/observabilidade/erros", "query": { "codigo": "REG-011" }
+  },
+  {
+    "id": "P01", "grupo": "Pedágio",
+    "titulo": "Pedágio com trechos em vários municípios e UFs",
+    "explicacao": "O IBS do pedágio é rateado entre os municípios/UFs proporcionalmente à extensão de cada trecho.",
+    "metodo": "POST", "caminho": "/pedagio",
+    "corpo": {
+      "dataHoraEmissao": "2026-10-20T10:00:00-03:00", "codigoMunicipioOrigem": 3550308, "ufMunicipioOrigem": "SP",
+      "cst": "000", "cClassTrib": "000002", "baseCalculo": 200.00,
+      "trechos": [
+        { "numero": 1, "municipio": 3550308, "uf": "SP", "extensao": 10 },
+        { "numero": 2, "municipio": 3509502, "uf": "SP", "extensao": 13 },
+        { "numero": 3, "municipio": 3304557, "uf": "RJ", "extensao": 10 }
+      ]
+    }
+  },
+  {
+    "id": "B01", "grupo": "Base de cálculo",
+    "titulo": "Base unificada NF-e – 2026 (com PIS/COFINS)",
+    "explicacao": "Calcula de uma vez a base do regime geral (baseRG), do Imposto Seletivo (baseIS) e do Simples Nacional (baseSN), aplicando a vigência de cada componente.",
+    "metodo": "POST", "caminho": "/base-calculo/base-calculo-unificada",
+    "corpo": { "anoFatoGerador": 2026, "tipoDocumento": 55, "natureza": "bem",
+      "vProd": 1000.00, "vFrete": 50.00, "vSeg": 20.00, "vOutro": 10.00, "vDesc": 50.00, "vIS": 30.00,
+      "vPIS": 9.25, "vCOFINS": 46.25, "vICMS": 180.00, "vFCP": 10.00 }
+  },
+  {
+    "id": "B02", "grupo": "Base de cálculo",
+    "titulo": "Base unificada NF-e – 2027 (PIS/COFINS ignorados com aviso)",
+    "explicacao": "Mesmos valores em 2027: PIS e COFINS deixam de existir e são ignorados, com aviso.",
+    "metodo": "POST", "caminho": "/base-calculo/base-calculo-unificada",
+    "corpo": { "anoFatoGerador": 2027, "tipoDocumento": 55, "natureza": "bem",
+      "vProd": 1000.00, "vFrete": 50.00, "vSeg": 20.00, "vOutro": 10.00, "vDesc": 50.00, "vIS": 30.00,
+      "vPIS": 9.25, "vCOFINS": 46.25, "vICMS": 180.00, "vFCP": 10.00 }
+  },
+  {
+    "id": "B03", "grupo": "Base de cálculo",
+    "titulo": "Base unificada NFS-e (experimental)",
+    "explicacao": "Bases de IBS/CBS (RG) e do Simples Nacional para serviços, com desconto incondicional e ISSQN.",
+    "metodo": "POST", "caminho": "/base-calculo/base-calculo-unificada-nfse",
+    "corpo": { "anoFatoGerador": 2026, "opSimpNac": "1", "situacao": "comum",
+      "vServ": 1000.00, "vDescIncond": 50.00, "vISSQN": 30.00, "vPIS": 9.25, "vCOFINS": 46.25 }
+  },
+  {
+    "id": "B04", "grupo": "Base de cálculo",
+    "titulo": "Base do Imposto Seletivo – mercadorias",
+    "explicacao": "Monta a base do IS a partir do valor do bem e de acréscimos, tributos e deduções (art. 418 LC 214/2025).",
+    "metodo": "POST", "caminho": "/base-calculo/is-mercadorias",
+    "corpo": { "anoFatoGerador": 2027, "valorBem": 1000.00, "juros": 10.00, "freteCobrado": 30.00, "icms": 180.00, "ipi": 50.00, "descontoIncondicional": 20.00 }
+  },
+  {
+    "id": "B05", "grupo": "Base de cálculo",
+    "titulo": "Base de CBS/IBS – mercadorias",
+    "explicacao": "Monta a base de CBS/IBS a partir do valor do bem, IS, ICMS, PIS/COFINS e descontos, conforme a vigência do ano.",
+    "metodo": "POST", "caminho": "/base-calculo/cbs-ibs-mercadorias",
+    "corpo": { "anoFatoGerador": 2026, "valorBem": 1000.00, "frete": 30.00, "impostoSeletivo": 25.00, "icms": 180.00, "pis": 16.50, "cofins": 76.00, "descontoIncondicional": 20.00 }
+  },
+  {
+    "id": "B06", "grupo": "Base de cálculo",
+    "titulo": "Base de cálculo da NFS-e no período de transição",
+    "explicacao": "Base de CBS/IBS de serviços: valor do serviço menos desconto incondicional, ISS, PIS e COFINS (conforme vigência).",
+    "metodo": "POST", "caminho": "/nfse/base-calculo",
+    "corpo": { "anoFatoGerador": 2026, "valorServico": 1000.00, "descontoIncondicional": 50.00, "iss": 50.00, "pis": 6.50, "cofins": 30.00 }
+  },
+  {
+    "id": "N01", "grupo": "NFS-e",
+    "titulo": "Indicadores de operação (cIndOp) para uma NBS",
+    "explicacao": "Lista os indicadores de operação aplicáveis à NBS, usados para definir o local de incidência do IBS no serviço.",
+    "metodo": "GET", "caminho": "/nfse/indicador-operacao", "query": { "nbs": "122011200", "dataOcorrenciaFatoGerador": "2026-06-01" }
+  },
+  {
+    "id": "N02", "grupo": "NFS-e",
+    "titulo": "Local da operação para um indicador (cIndOp)",
+    "explicacao": "Mostra qual é o local da operação (fornecimento/incidência) para o cIndOp informado.",
+    "metodo": "GET", "caminho": "/nfse/local-operacao", "query": { "cIndOp": "100301", "dataOcorrenciaFatoGerador": "2026-06-01" }
+  },
+  {
+    "id": "N03", "grupo": "NFS-e",
+    "titulo": "Validação de cIndOp x cClassTrib x NBS",
+    "explicacao": "Confere se o indicador de operação é compatível com a classificação tributária e a NBS do serviço.",
+    "metodo": "POST", "caminho": "/nfse/indicador-operacao/validate",
+    "corpo": { "cIndOp": "030101", "cClassTrib": "200028", "nbs": "122011200", "dataOcorrenciaFatoGerador": "2026-06-01" }
+  },
+  {
+    "id": "N04", "grupo": "NFS-e",
+    "titulo": "CSTs e cClassTribs aplicáveis a uma NBS",
+    "explicacao": "Dado um serviço (NBS), lista todas as situações e classificações tributárias que podem ser usadas.",
+    "metodo": "GET", "caminho": "/nfse/situacoes-classificacoes-tributarias", "query": { "nbs": "122011200", "data": "2026-06-01" }
+  },
+  {
+    "id": "N05", "grupo": "NFS-e",
+    "titulo": "Tabela de locais de fornecimento",
+    "explicacao": "Tabela auxiliar de locais de fornecimento da NFS-e.",
+    "metodo": "GET", "caminho": "/nfse/locais-fornecimento"
+  },
+  {
+    "id": "N06", "grupo": "NFS-e",
+    "titulo": "Tabela de locais de incidência",
+    "explicacao": "Tabela auxiliar de locais de incidência do IBS na NFS-e.",
+    "metodo": "GET", "caminho": "/nfse/locais-incidencia"
+  },
+  {
+    "id": "X01", "grupo": "XML",
+    "titulo": "Tipos de documento aceitos na geração de XML",
+    "explicacao": "Lista os DF-e para os quais a calculadora gera o grupo de tributação em XML (NF-e, NFC-e, CT-e, BP-e, NF3-e, NFCom...).",
+    "metodo": "GET", "caminho": "/xml/generate"
+  },
+  {
+    "id": "X02", "grupo": "XML",
+    "titulo": "Gerar o XML do grupo de tributação (NF-e) a partir do cálculo",
+    "explicacao": "Envia o resultado de /regime-geral e recebe o trecho XML pronto para a nota. A ferramenta encadeia: calcula o cenário C12 e envia a resposta para geração.",
+    "metodo": "POST", "caminho": "/xml/generate", "query": { "tipo": "nfe" }, "corpoDe": "C12"
+  },
+  {
+    "id": "X03", "grupo": "XML",
+    "titulo": "Validar o XML gerado contra o XSD oficial",
+    "explicacao": "Valida o XML (subtipo grupo ou nota). Retorna true ou HTTP 422 com linha e coluna do erro.",
+    "metodo": "POST", "caminho": "/xml/validate", "query": { "tipo": "nfe", "subtipo": "grupo" }, "corpoDe": "X02", "tipoConteudo": "application/xml"
+  },
+  { "id": "D01", "grupo": "Consultas (dados abertos)", "titulo": "Versão do aplicativo e do banco de dados", "explicacao": "Mostra a versão da calculadora e da base de regras (tabelas de cClassTrib etc.).", "metodo": "GET", "caminho": "/dados-abertos/versao" },
+  { "id": "D02", "grupo": "Consultas (dados abertos)", "titulo": "Alíquota de referência da CBS (União) em 2026", "explicacao": "Alíquotas de referência existem apenas para 2026; a partir de 2027 a consulta retorna 404.", "metodo": "GET", "caminho": "/dados-abertos/aliquota-uniao", "query": { "data": "2026-06-01" } },
+  { "id": "D03", "grupo": "Consultas (dados abertos)", "titulo": "Alíquota de referência do IBS estadual (SP)", "explicacao": "Usa o código IBGE da UF (35 = SP).", "metodo": "GET", "caminho": "/dados-abertos/aliquota-uf", "query": { "codigoUf": "35", "data": "2026-06-01" } },
+  { "id": "D04", "grupo": "Consultas (dados abertos)", "titulo": "Alíquota de referência do IBS municipal (São Paulo)", "explicacao": "Usa o código IBGE do município.", "metodo": "GET", "caminho": "/dados-abertos/aliquota-municipio", "query": { "codigoMunicipio": "3550308", "data": "2026-06-01" } },
+  { "id": "D05", "grupo": "Consultas (dados abertos)", "titulo": "Lista de UFs", "explicacao": "UFs com código IBGE.", "metodo": "GET", "caminho": "/dados-abertos/ufs" },
+  { "id": "D06", "grupo": "Consultas (dados abertos)", "titulo": "Municípios de uma UF", "explicacao": "Municípios com código IBGE.", "metodo": "GET", "caminho": "/dados-abertos/ufs/municipios", "query": { "siglaUf": "RS" } },
+  { "id": "D07", "grupo": "Consultas (dados abertos)", "titulo": "Todos os CSTs com suas cClassTribs (CBS/IBS)", "explicacao": "Árvore completa: 18 CSTs e as classificações de cada um.", "metodo": "GET", "caminho": "/dados-abertos/situacoes-tributarias/cbs-ibs", "query": { "data": "2027-01-01" } },
+  { "id": "D08", "grupo": "Consultas (dados abertos)", "titulo": "Detalhe de uma cClassTrib (CBS/IBS)", "explicacao": "Percentuais de redução, tipo de alíquota, crédito, DF-e onde pode ser usada, nomenclatura exigida etc.", "metodo": "GET", "caminho": "/dados-abertos/classificacoes-tributarias/cbs-ibs/class-trib/200028", "query": { "data": "2027-01-01" } },
+  { "id": "D09", "grupo": "Consultas (dados abertos)", "titulo": "cClassTribs de um CST (CBS/IBS)", "explicacao": "Todas as classificações do CST 200 (alíquota reduzida).", "metodo": "GET", "caminho": "/dados-abertos/classificacoes-tributarias/cbs-ibs/200", "query": { "data": "2027-01-01" } },
+  { "id": "D10", "grupo": "Consultas (dados abertos)", "titulo": "cClassTribs válidas por fornecedor/adquirente", "explicacao": "Filtra classificações pelos atores da operação (ver D20 para os códigos de atores).", "metodo": "GET", "caminho": "/dados-abertos/classificacoes-tributarias/cbs-ibs/por-atores", "query": { "data": "2027-01-01" } },
+  { "id": "D11", "grupo": "Consultas (dados abertos)", "titulo": "CSTs do Imposto Seletivo", "explicacao": "Situações tributárias do IS.", "metodo": "GET", "caminho": "/dados-abertos/situacoes-tributarias/imposto-seletivo", "query": { "data": "2027-01-01" } },
+  { "id": "D12", "grupo": "Consultas (dados abertos)", "titulo": "cClassTribs do Imposto Seletivo", "explicacao": "Classificações do IS (bens prejudiciais à saúde ou ao meio ambiente).", "metodo": "GET", "caminho": "/dados-abertos/classificacoes-tributarias/imposto-seletivo", "query": { "data": "2027-01-01" } },
+  { "id": "D13", "grupo": "Consultas (dados abertos)", "titulo": "Consulta de NCM", "explicacao": "Descrição da NCM e se está sujeita ao IS, com alíquotas.", "metodo": "GET", "caminho": "/dados-abertos/ncm", "query": { "ncm": "22030000", "data": "2027-01-01" } },
+  { "id": "D14", "grupo": "Consultas (dados abertos)", "titulo": "Consulta de NBS", "explicacao": "Descrição do serviço na NBS.", "metodo": "GET", "caminho": "/dados-abertos/nbs", "query": { "nbs": "122011200", "data": "2027-01-01" } },
+  { "id": "D15", "grupo": "Consultas (dados abertos)", "titulo": "A NCM pode ser usada com esta cClassTrib?", "explicacao": "Valida o vínculo NCM x cClassTrib antes de emitir a nota.", "metodo": "GET", "caminho": "/dados-abertos/classificacoes-tributarias/ncm-aplicavel", "query": { "cClassTrib": "200003", "ncm": "10063021", "dataOcorrenciaFatoGerador": "2027-01-01" } },
+  { "id": "D16", "grupo": "Consultas (dados abertos)", "titulo": "A NBS pode ser usada com esta cClassTrib?", "explicacao": "Valida o vínculo NBS x cClassTrib.", "metodo": "GET", "caminho": "/dados-abertos/classificacoes-tributarias/nbs-aplicavel", "query": { "cClassTrib": "200028", "nbs": "122011200", "dataOcorrenciaFatoGerador": "2027-01-01" } },
+  { "id": "D17", "grupo": "Consultas (dados abertos)", "titulo": "cClassTribs aplicáveis a uma NBS", "explicacao": "Quais classificações podem ser usadas para o serviço.", "metodo": "GET", "caminho": "/dados-abertos/classificacoes-tributarias/nbs", "query": { "nbs": "122011200", "data": "2027-01-01" } },
+  { "id": "D18", "grupo": "Consultas (dados abertos)", "titulo": "Fundamentações legais", "explicacao": "Dispositivos da LC 214/2025 que embasam cada classificação.", "metodo": "GET", "caminho": "/dados-abertos/fundamentacoes-legais", "query": { "data": "2027-01-01" } },
+  { "id": "D19", "grupo": "Consultas (dados abertos)", "titulo": "Tipos de DF-e agrupados", "explicacao": "Documentos fiscais eletrônicos reconhecidos (NF-e, NFC-e, NFS-e, CT-e, BP-e, NF3-e, NFCom...).", "metodo": "GET", "caminho": "/dados-abertos/dfe/grupos", "query": { "data": "2027-01-01" } },
+  { "id": "D20", "grupo": "Consultas (dados abertos)", "titulo": "Atores agrupados (fornecedor/adquirente)", "explicacao": "Tipos de fornecedor e adquirente usados no filtro por atores.", "metodo": "GET", "caminho": "/dados-abertos/ator/grupos", "query": { "data": "2027-01-01" } },
+  { "id": "D21", "grupo": "Consultas (dados abertos)", "titulo": "Nomenclatura exigida (NCM/NBS) por DF-e e cClassTrib", "explicacao": "Indica se o documento exige NCM, NBS ou ambos para a classificação.", "metodo": "GET", "caminho": "/dados-abertos/nomenclatura/NFe/000001", "query": { "data": "2027-01-01" } },
+  { "id": "D22", "grupo": "Consultas (dados abertos)", "titulo": "Redutores de compra governamental", "explicacao": "Percentuais de redução aplicados nas compras públicas, por ano.", "metodo": "GET", "caminho": "/dados-abertos/redutores-compra-governamental" },
+  { "id": "D23", "grupo": "Consultas (dados abertos)", "titulo": "Transferências de CBS para entes governamentais", "explicacao": "Tabela de transferência da CBS nas compras governamentais.", "metodo": "GET", "caminho": "/dados-abertos/transferencias-cbs" },
+  { "id": "D24", "grupo": "Consultas (dados abertos)", "titulo": "Transferências de IBS para entes governamentais", "explicacao": "Tabela de transferência do IBS nas compras governamentais.", "metodo": "GET", "caminho": "/dados-abertos/transferencias-ibs" }
+]

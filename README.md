@@ -1,1 +1,49 @@
-# Kes
+# Calculadora da Reforma Tributária (CBS, IBS e IS)
+
+Ferramenta web para calcular CBS, IBS e Imposto Seletivo (LC 214/2025) no regime regular, usando a **API oficial da Receita Federal**:
+[ReceitaFederal/calculadora-rtc-regime-regular](https://github.com/ReceitaFederal/calculadora-rtc-regime-regular). Testada com a versão 1.7.2, base V0073 de 09/11/2026.
+
+A ferramenta não reimplementa as regras. Todo cálculo é feito pela calculadora oficial, e a ferramenta cuida da interface, dos formulários, dos cenários prontos e da apresentação dos resultados.
+
+```
+navegador ──► ferramenta/servidor.py (porta 8000) ──► API oficial (porta 8080)
+              interface web + repasse /api                Java + SQLite com as tabelas oficiais
+```
+
+## Como usar
+
+```bash
+# 1. Baixar, compilar e subir a API oficial (requer git e Java 21+)
+scripts/instalar_api_oficial.sh            # deixa a API em http://localhost:8080/api
+
+# 2. Em outro terminal, subir a interface (apenas Python 3, sem dependências)
+python3 ferramenta/servidor.py             # abra http://localhost:8000
+```
+
+Se a API estiver em outro endereço: `python3 ferramenta/servidor.py --api http://servidor:8080/api`.
+
+## O que a ferramenta faz
+
+| Aba | O que faz |
+|---|---|
+| **Calcular operação** | Formulário com data, UF/município, tipo de documento, compra governamental e vários itens (NCM/NBS, CST e cClassTrib carregados das tabelas oficiais, base, alíquotas, IS e tributação regular). Mostra os totais, o resultado por item, a alíquota efetiva, o diferimento e a memória de cálculo. Gera e valida o XML do grupo de tributação (NF-e, NFC-e, CT-e, BP-e, NF3-e). |
+| **Cenários prontos** | 55 cenários que cobrem os endpoints da API, com explicação. Cada um pode ser executado ou aberto na calculadora para edição. |
+| **Base de cálculo** | Base unificada da NF-e/NFC-e: regime geral, IS e Simples Nacional, com a vigência de cada componente. |
+| **Consultas** | NCM, NBS, cClassTrib, vínculo NCM/NBS × cClassTrib, indicadores de operação da NFS-e, alíquotas de referência, fundamentação legal, redutores de compra governamental e códigos de erro. |
+
+## Demonstração e cobertura
+
+```bash
+python3 demo/executar_cenarios.py   # roda os 55 cenários e grava as respostas reais em demo/resultados/
+python3 demo/mapa_cobertura.py      # testa cada cClassTrib e lista o que a calculadora oficial ainda não implementa
+```
+
+O catálogo de cenários fica em `cenarios/cenarios.json`. A interface e a demonstração usam o mesmo arquivo.
+
+## Regras importantes da API oficial
+
+- **2026 (ano-teste):** a API usa as alíquotas de referência cadastradas (CBS 0,9% e IBS 0,1%). O campo `aliquotasNominais` é proibido.
+- **A partir de 2027:** `aliquotasNominais` é obrigatório em cada item. O resultado sai como *cálculo simulado* (header `x-warning-dados-simulados`).
+- `/regime-geral` rejeita a operação inteira (HTTP 422) se um item tiver erro. `/observabilidade/regime-geral` devolve o erro por item e calcula os demais.
+- **Ainda não implementado na v1.7.2** (resposta "Classificação tributária em desenvolvimento"): monofasia de combustíveis (620001 a 620007), incorporação/parcelamento imobiliário (221002 a 221004), transferência de crédito (800001 e 800002), ajustes (810001, 811001 a 811003) e 830001.
+- O resultado é uma simulação de apoio. Não substitui a apuração oficial nem a análise tributária do caso concreto.

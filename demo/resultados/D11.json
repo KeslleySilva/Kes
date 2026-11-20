@@ -1,0 +1,44 @@
+{
+  "url": "http://localhost:8080/api/calculadora/dados-abertos/situacoes-tributarias/imposto-seletivo?data=2027-01-01",
+  "status": 200,
+  "ms": 4,
+  "avisos": {},
+  "resposta": [
+    {
+      "codigo": "000",
+      "descricao": "Tributado com Imposto Seletivo",
+      "id": 19
+    },
+    {
+      "codigo": "100",
+      "descricao": "Imunidade",
+      "id": 20
+    },
+    {
+      "codigo": "200",
+      "descricao": "Não ocorrência do Fato Gerador",
+      "id": 21
+    },
+    {
+      "codigo": "300",
+      "descricao": "Devolução",
+      "id": 22
+    },
+    {
+      "codigo": "400",
+      "descricao": "Suspensão",
+      "id": 23
+    },
+    {
+      "codigo": "500",
+      "descricao": "Alíquota Zero",
+      "id": 24
+    },
+    {
+      "codigo": "600",
+      "descricao": "Isenção",
+      "id": 25
+    }
+  ],
+  "corpoEnviado": null
+}

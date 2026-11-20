@@ -1,0 +1,17 @@
+{
+  "url": "http://localhost:8080/api/calculadora/nfse/base-calculo",
+  "status": 200,
+  "ms": 2,
+  "avisos": {},
+  "resposta": {
+    "baseCalculo": 863.5
+  },
+  "corpoEnviado": {
+    "anoFatoGerador": 2026,
+    "valorServico": 1000.0,
+    "descontoIncondicional": 50.0,
+    "iss": 50.0,
+    "pis": 6.5,
+    "cofins": 30.0
+  }
+}

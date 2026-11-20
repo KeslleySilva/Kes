@@ -1,0 +1,16 @@
+{
+  "url": "http://localhost:8080/api/calculadora/dados-abertos/ncm?ncm=22030000&data=2027-01-01",
+  "status": 200,
+  "ms": 10,
+  "avisos": {
+    "x-warning-dados-simulados": "1"
+  },
+  "resposta": {
+    "capitulo": "Bebidas, líquidos alcoólicos e vinagres.",
+    "subitem": "Cervejas de malte.",
+    "temAliquotaAdRem": false,
+    "temAliquotaAdValorem": true,
+    "tributadoPeloImpostoSeletivo": true
+  },
+  "corpoEnviado": null
+}

@@ -1,0 +1,13 @@
+{
+  "url": "http://localhost:8080/api/calculadora/dados-abertos/redutores-compra-governamental",
+  "status": 200,
+  "ms": 2,
+  "avisos": {},
+  "resposta": [
+    {
+      "inicioVigencia": "2026-01-01",
+      "valor": 0.0
+    }
+  ],
+  "corpoEnviado": null
+}

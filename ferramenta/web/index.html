@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora RTC</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header class="topo">
+  <div>
+    <h1>Calculadora da Reforma Tributária</h1>
+    <p class="sub">CBS, IBS e Imposto Seletivo (LC 214/2025), regime regular, usando a API oficial da Receita Federal</p>
+  </div>
+  <div id="versao" class="versao">conectando…</div>
+</header>
+
+<nav class="abas" role="tablist">
+  <button class="aba ativa" data-aba="calc">Calcular operação</button>
+  <button class="aba" data-aba="cenarios">Cenários prontos</button>
+  <button class="aba" data-aba="base">Base de cálculo</button>
+  <button class="aba" data-aba="consultas">Consultas</button>
+</nav>
+
+<main>
+  <!-- ============ CALCULAR ============ -->
+  <section id="aba-calc" class="painel ativo">
+    <div class="cartao">
+      <h2>Operação</h2>
+      <div class="grade">
+        <label>Data do fato gerador<input type="date" id="op-data" value="2026-06-10"></label>
+        <label>UF<select id="op-uf"></select></label>
+        <label>Município<select id="op-mun"></select></label>
+        <label>Documento fiscal (tpDoc)<select id="op-tpdoc"><option value="">Não informar</option></select></label>
+        <label>Compra governamental<select id="op-ente">
+          <option value="">Não é compra governamental</option>
+          <option value="1">União</option><option value="2">Estado</option><option value="3">Distrito Federal</option>
+          <option value="4">Município</option><option value="5">Consórcio público</option><option value="6">Comitê Gestor do IBS</option>
+        </select></label>
+        <label id="lbl-operGov" hidden>Tipo de operação governamental<select id="op-operGov">
+          <option value="1">Fornecimento com pagamento posterior</option>
+          <option value="2">Recebimento do pagamento com fornecimento já realizado</option>
+          <option value="3">Fornecimento com pagamento já realizado</option>
+          <option value="4">Recebimento do pagamento com fornecimento posterior</option>
+          <option value="5">Fornecimento e recebimento concomitantes</option>
+        </select></label>
+      </div>
+      <p class="nota" id="nota-ano"></p>
+    </div>
+
+    <div class="cartao">
+      <div class="linha-titulo"><h2>Itens</h2><button id="add-item" class="sec">+ Adicionar item</button></div>
+      <div id="itens"></div>
+    </div>
+
+    <div class="acoes">
+      <label class="check"><input type="checkbox" id="modo-obs" checked> Modo observabilidade (erros por item, sem rejeitar a nota inteira)</label>
+      <button id="calcular" class="pri">Calcular</button>
+    </div>
+
+    <div id="resultado"></div>
+  </section>
+
+  <!-- ============ CENÁRIOS ============ -->
+  <section id="aba-cenarios" class="painel">
+    <div class="cartao">
+      <h2>Todos os cenários de demonstração</h2>
+      <p class="nota">Cada cenário chama um endpoint da API oficial com dados reais. Clique em <b>Executar</b> para ver a resposta, ou em <b>Abrir na calculadora</b> para editar.</p>
+      <button id="rodar-todos" class="sec">Executar todos</button>
+    </div>
+    <div id="lista-cenarios"></div>
+  </section>
+
+  <!-- ============ BASE ============ -->
+  <section id="aba-base" class="painel">
+    <div class="cartao">
+      <h2>Base de cálculo unificada (NF-e / NFC-e)</h2>
+      <p class="nota">Calcula de uma vez a base do regime geral (CBS/IBS), do Imposto Seletivo e do Simples Nacional, aplicando a vigência de cada componente no ano.</p>
+      <div class="grade" id="base-campos"></div>
+      <div class="acoes"><button id="calc-base" class="pri">Calcular bases</button></div>
+      <div id="base-res"></div>
+    </div>
+  </section>
+
+  <!-- ============ CONSULTAS ============ -->
+  <section id="aba-consultas" class="painel">
+    <div class="cartao">
+      <h2>Consultar tabelas oficiais</h2>
+      <div class="grade">
+        <label>Consulta<select id="cq-tipo">
+          <option value="ncm">NCM (descrição e Imposto Seletivo)</option>
+          <option value="nbs">NBS (serviço)</option>
+          <option value="ct">cClassTrib (detalhe CBS/IBS)</option>
+          <option value="ncmct">NCM pode ser usada com a cClassTrib?</option>
+          <option value="nbsct">NBS pode ser usada com a cClassTrib?</option>
+          <option value="ctnbs">cClassTribs aplicáveis a uma NBS</option>
+          <option value="indop">Indicadores de operação (cIndOp) da NBS</option>
+          <option value="aliq">Alíquotas de referência (União, UF, município)</option>
+          <option value="fund">Fundamentações legais</option>
+          <option value="redgov">Redutores de compra governamental</option>
+          <option value="erro">Descrição de código de erro</option>
+        </select></label>
+        <label>Código<input id="cq-cod" placeholder="ex.: 22030000"></label>
+        <label>cClassTrib (quando aplicável)<input id="cq-ct" placeholder="ex.: 200003"></label>
+        <label>Data<input type="date" id="cq-data" value="2027-01-01"></label>
+      </div>
+      <div class="acoes"><button id="consultar" class="pri">Consultar</button></div>
+      <div id="cq-res"></div>
+    </div>
+  </section>
+</main>
+
+<template id="tpl-item">
+  <div class="item">
+    <div class="item-topo"><b class="item-num"></b><button class="rem link">remover</button></div>
+    <div class="grade">
+      <label>Tipo<select class="i-tipo"><option value="ncm">Bem (NCM)</option><option value="nbs">Serviço (NBS)</option></select></label>
+      <label><span class="i-codlbl">NCM</span><input class="i-cod" placeholder="8 dígitos"></label>
+      <label>CST<select class="i-cst"></select></label>
+      <label>cClassTrib<select class="i-ct"></select></label>
+      <label>Base de cálculo (R$)<input class="i-bc" type="number" step="0.01" min="0" value="1000.00"></label>
+      <label>Quantidade<input class="i-qtd" type="number" step="0.0001" value="1"></label>
+      <label>Unidade<input class="i-un" value="UN"></label>
+    </div>
+    <p class="ct-desc nota"></p>
+    <div class="aliq grade" hidden>
+      <label>Alíquota CBS (%)<input class="i-acbs" type="number" step="0.0001" value="8.8"></label>
+      <label>Alíquota IBS estadual (%)<input class="i-aibsuf" type="number" step="0.0001" value="0.05"></label>
+      <label>Alíquota IBS municipal (%)<input class="i-aibsmun" type="number" step="0.0001" value="0.05"></label>
+    </div>
+    <details class="extra">
+      <summary>Imposto Seletivo</summary>
+      <label class="check"><input type="checkbox" class="i-is"> Item sujeito ao Imposto Seletivo</label>
+      <div class="grade">
+        <label>CST IS<input class="i-iscst" value="000"></label>
+        <label>cClassTrib IS<input class="i-isct" value="000001"></label>
+        <label>Base do IS (R$)<input class="i-isbc" type="number" step="0.01" value="150.00"></label>
+        <label>Alíquota ad valorem (%)<input class="i-isav" type="number" step="0.0001" value="10"></label>
+        <label>Alíquota ad rem (R$/unid.)<input class="i-isar" type="number" step="0.0001"></label>
+      </div>
+      <p class="nota">Com IS, a base de CBS/IBS é derivada: base do IS + valor do IS.</p>
+    </details>
+    <details class="extra">
+      <summary>Tributação regular (para CST de desoneração, ex.: 550)</summary>
+      <div class="grade">
+        <label>CST regular<input class="i-trcst" placeholder="ex.: 200"></label>
+        <label>cClassTrib regular<input class="i-trct" placeholder="ex.: 200043"></label>
+      </div>
+    </details>
+  </div>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>

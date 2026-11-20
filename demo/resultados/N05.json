@@ -1,0 +1,125 @@
+{
+  "url": "http://localhost:8080/api/calculadora/nfse/locais-fornecimento",
+  "status": 200,
+  "ms": 3,
+  "avisos": {},
+  "resposta": [
+    {
+      "codigo": 1,
+      "descricao": "Endereço diverso do fornecedor, adquirente ou destinatário"
+    },
+    {
+      "codigo": 2,
+      "descricao": "Local da prestação do serviço diverso do estabelecimento do fornecedor"
+    },
+    {
+      "codigo": 3,
+      "descricao": "Endereço do destinatário"
+    },
+    {
+      "codigo": 4,
+      "descricao": "Endereço fornecido para entrega do bem"
+    },
+    {
+      "codigo": 5,
+      "descricao": "Estabelecimento do fornecedor como local da prestação"
+    },
+    {
+      "codigo": 6,
+      "descricao": "Local do porto como local da prestação"
+    },
+    {
+      "codigo": 7,
+      "descricao": "Local da prestação correspondente à extensão da via explorada, proporcionalmente ao território dos entes tributantes"
+    },
+    {
+      "codigo": 8,
+      "descricao": "Local da retirada do bem"
+    },
+    {
+      "codigo": 9,
+      "descricao": "Local de início do transporte"
+    },
+    {
+      "codigo": 10,
+      "descricao": "Local do domicílio principal do destinatário residente ou domiciliado no País, caso o adquirente não seja residente ou domiciliado no País"
+    },
+    {
+      "codigo": 11,
+      "descricao": "Local do domicílio principal do adquirente residente ou domiciliado no País. Nas aquisições indicadas no art. 11, §4º, II, considera-se domicílio principal do adquirente o estabelecimento matriz"
+    },
+    {
+      "codigo": 12,
+      "descricao": "local do domicílio principal do destinatário residente ou domiciliado no País"
+    },
+    {
+      "codigo": 13,
+      "descricao": "Local do evento a que se refere o serviço"
+    },
+    {
+      "codigo": 14,
+      "descricao": "Localidade do imóvel"
+    },
+    {
+      "codigo": 15,
+      "descricao": "Estabelecimento do fornecedor como o local da entrega ou disponibilização do bem ao destinatário"
+    },
+    {
+      "codigo": 16,
+      "descricao": "Local da realização da operação e sua retirada"
+    },
+    {
+      "codigo": 17,
+      "descricao": "Endereço do destinatário fornecido para entrega ou disponibilização (assim considerado o destino final indicado pelo adquirente)"
+    },
+    {
+      "codigo": 18,
+      "descricao": "Local onde se encontra o bem móvel material"
+    },
+    {
+      "codigo": 19,
+      "descricao": "Local onde se encontra o bem móvel material (Local da retirada)"
+    },
+    {
+      "codigo": 20,
+      "descricao": "Local do domicílio principal do adquirente (estabelecimento matriz)"
+    },
+    {
+      "codigo": 21,
+      "descricao": "Domicílio principal do destinatário"
+    },
+    {
+      "codigo": 22,
+      "descricao": "Local de instalação do terminal"
+    },
+    {
+      "codigo": 23,
+      "descricao": "Local do domicílio principal do adquirente (assim considerada a matriz), nas aquisições realizadas de forma centralizada por contribuinte sujeito ao regime regular do IBS e da CBS que possui mais de um estabelecimento e que não estejam sujeitas a vedação à apropriação de créditos"
+    },
+    {
+      "codigo": 24,
+      "descricao": "Local da entrega ou disponibilização"
+    },
+    {
+      "codigo": 25,
+      "descricao": "Local do estabelecimento principal do adquirente (assim considerada a matriz), conforme §4º do art. 11"
+    },
+    {
+      "codigo": 26,
+      "descricao": "Local do estabelecimento do agente ou de seus representados que figurem na posição devedora da liquidação financeira apurada pela Câmara de Comercialização de Energia Elétrica"
+    },
+    {
+      "codigo": 27,
+      "descricao": "Local do estabelecimento principal do fornecedor"
+    },
+    {
+      "codigo": 28,
+      "descricao": "Local do estabelecimento principal do adquirente"
+    },
+    {
+      "codigo": 29,
+      "descricao": "Localidade do Imóvel (BICE)"
+    }
+  ],
+  "corpoEnviado": null
+}

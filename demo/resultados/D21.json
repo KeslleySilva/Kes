@@ -1,0 +1,16 @@
+{
+  "url": "http://localhost:8080/api/calculadora/dados-abertos/nomenclatura/NFe/000001?data=2027-01-01",
+  "status": 200,
+  "ms": 3,
+  "avisos": {},
+  "resposta": {
+    "cClassTrib": "000001",
+    "data": "2027-01-01",
+    "nbsOpcional": false,
+    "ncmOpcional": true,
+    "nomenclatura": "SEM",
+    "obrigatorio": false,
+    "siglaDfe": "NFe"
+  },
+  "corpoEnviado": null
+}

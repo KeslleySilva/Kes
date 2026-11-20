@@ -1,0 +1,13 @@
+{
+  "url": "http://localhost:8080/api/calculadora/dados-abertos/classificacoes-tributarias/ncm-aplicavel?cClassTrib=200003&ncm=10063021&dataOcorrenciaFatoGerador=2027-01-01",
+  "status": 200,
+  "ms": 2,
+  "avisos": {},
+  "resposta": {
+    "cClassTrib": "200003",
+    "dataOcorrenciaFatoGerador": "2027-01-01",
+    "ncm": "10063021",
+    "valido": true
+  },
+  "corpoEnviado": null
+}

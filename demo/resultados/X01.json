@@ -1,0 +1,44 @@
+{
+  "url": "http://localhost:8080/api/calculadora/xml/generate",
+  "status": 200,
+  "ms": 2,
+  "avisos": {},
+  "resposta": [
+    {
+      "nome": "NFe",
+      "mnemonico": "nfe",
+      "versaoNotaTecnica": "v1.36"
+    },
+    {
+      "nome": "NFCe",
+      "mnemonico": "nfce",
+      "versaoNotaTecnica": "v1.36"
+    },
+    {
+      "nome": "CTe",
+      "mnemonico": "cte",
+      "versaoNotaTecnica": "v1.14a"
+    },
+    {
+      "nome": "CTe Simplificado",
+      "mnemonico": "cte-simplificado",
+      "versaoNotaTecnica": "v1.14a"
+    },
+    {
+      "nome": "BPe",
+      "mnemonico": "bpe",
+      "versaoNotaTecnica": "v1.14a"
+    },
+    {
+      "nome": "BPeTM",
+      "mnemonico": "bpe-tm",
+      "versaoNotaTecnica": "v1.14a"
+    },
+    {
+      "nome": "NF3E",
+      "mnemonico": "nf3e",
+      "versaoNotaTecnica": "v1.14a"
+    }
+  ],
+  "corpoEnviado": null
+}

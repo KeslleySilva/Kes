@@ -1,0 +1,12 @@
+{
+  "url": "http://localhost:8080/api/calculadora/observabilidade/erros?codigo=REG-011",
+  "status": 200,
+  "ms": 3,
+  "avisos": {},
+  "resposta": {
+    "codigo": "REG-011",
+    "titulo": "NCM não vinculada",
+    "descricao": "O código NCM informado não está vinculado a nenhuma classificação tributária vigente."
+  },
+  "corpoEnviado": null
+}

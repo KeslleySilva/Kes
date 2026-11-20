@@ -1,0 +1,131 @@
+{
+  "url": "http://localhost:8080/api/calculadora/pedagio",
+  "status": 200,
+  "ms": 10,
+  "avisos": {},
+  "resposta": {
+    "baseCalculo": 200.0,
+    "cClassTrib": "000002",
+    "cst": "000",
+    "dataHoraEmissao": "2026-10-20T10:00:00-03:00",
+    "extensaoTotal": 33,
+    "municipioOrigem": 3550308,
+    "total": {
+      "cbsTotal": {
+        "baseCalculo": "200.00",
+        "valorApurado": "1.80",
+        "valorDevido": "1.80",
+        "valorTributo": "1.80"
+      },
+      "ibsEstadualTotal": {
+        "baseCalculo": "200.00",
+        "valorApurado": "0.20",
+        "valorDevido": "0.20",
+        "valorTributo": "0.20"
+      },
+      "ibsMunicipalTotal": {
+        "baseCalculo": "200.00",
+        "valorApurado": "0.00",
+        "valorDevido": "0.00",
+        "valorTributo": "0.00"
+      }
+    },
+    "trechos": [
+      {
+        "baseCalculo": 200.0,
+        "cbs": {
+          "aliquota": 0.9,
+          "aliquotaEfetiva": 0.2727,
+          "tributoCalculado": 0.55
+        },
+        "extensaoTrecho": 10,
+        "ibsEstadual": {
+          "aliquota": 0.1,
+          "aliquotaEfetiva": 0.0303,
+          "tributoCalculado": 0.06
+        },
+        "ibsMunicipal": {
+          "aliquota": 0.0,
+          "aliquotaEfetiva": 0.0,
+          "tributoCalculado": 0.0
+        },
+        "municipio": 3550308,
+        "numero": 1,
+        "uf": "SP"
+      },
+      {
+        "baseCalculo": 200.0,
+        "cbs": {
+          "aliquota": 0.9,
+          "aliquotaEfetiva": 0.3545,
+          "tributoCalculado": 0.71
+        },
+        "extensaoTrecho": 13,
+        "ibsEstadual": {
+          "aliquota": 0.1,
+          "aliquotaEfetiva": 0.0394,
+          "tributoCalculado": 0.08
+        },
+        "ibsMunicipal": {
+          "aliquota": 0.0,
+          "aliquotaEfetiva": 0.0,
+          "tributoCalculado": 0.0
+        },
+        "municipio": 3509502,
+        "numero": 2,
+        "uf": "SP"
+      },
+      {
+        "baseCalculo": 200.0,
+        "cbs": {
+          "aliquota": 0.9,
+          "aliquotaEfetiva": 0.2727,
+          "tributoCalculado": 0.54
+        },
+        "extensaoTrecho": 10,
+        "ibsEstadual": {
+          "aliquota": 0.1,
+          "aliquotaEfetiva": 0.0303,
+          "tributoCalculado": 0.06
+        },
+        "ibsMunicipal": {
+          "aliquota": 0.0,
+          "aliquotaEfetiva": 0.0,
+          "tributoCalculado": 0.0
+        },
+        "municipio": 3304557,
+        "numero": 3,
+        "uf": "RJ"
+      }
+    ],
+    "ufMunicipioOrigem": "SP"
+  },
+  "corpoEnviado": {
+    "dataHoraEmissao": "2026-10-20T10:00:00-03:00",
+    "codigoMunicipioOrigem": 3550308,
+    "ufMunicipioOrigem": "SP",
+    "cst": "000",
+    "cClassTrib": "000002",
+    "baseCalculo": 200.0,
+    "trechos": [
+      {
+        "numero": 1,
+        "municipio": 3550308,
+        "uf": "SP",
+        "extensao": 10
+      },
+      {
+        "numero": 2,
+        "municipio": 3509502,
+        "uf": "SP",
+        "extensao": 13
+      },
+      {
+        "numero": 3,
+        "municipio": 3304557,
+        "uf": "RJ",
+        "extensao": 10
+      }
+    ]
+  }
+}

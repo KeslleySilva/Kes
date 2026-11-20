@@ -1,0 +1,49 @@
+{
+  "url": "http://localhost:8080/api/calculadora/nfse/indicador-operacao?nbs=122011200&dataOcorrenciaFatoGerador=2026-06-01",
+  "status": 200,
+  "ms": 4,
+  "avisos": {},
+  "resposta": [
+    {
+      "adquirenteExterior": false,
+      "cIndOp": "030101",
+      "codigoLocalFornecimento": 5,
+      "codigoLocalIncidencia": 3,
+      "localFornecimento": "Estabelecimento do fornecedor como local da prestação",
+      "localIncidencia": "Estabelecimento do Prestador/Fornecedor",
+      "prestacaoServicoOnerosa": true,
+      "tipoOperacao": "Serviço prestado fisicamente sobre a pessoa ou fruído presencialmente por pessoa física"
+    },
+    {
+      "adquirenteExterior": false,
+      "cIndOp": "030102",
+      "codigoLocalFornecimento": 2,
+      "codigoLocalIncidencia": 2,
+      "localFornecimento": "Local da prestação do serviço diverso do estabelecimento do fornecedor",
+      "localIncidencia": "Endereço do Tomador/Adquirente",
+      "prestacaoServicoOnerosa": true,
+      "tipoOperacao": "Serviço prestado fisicamente sobre a pessoa ou fruído presencialmente por pessoa física"
+    },
+    {
+      "adquirenteExterior": false,
+      "cIndOp": "030103",
+      "codigoLocalFornecimento": 3,
+      "codigoLocalIncidencia": 1,
+      "localFornecimento": "Endereço do destinatário",
+      "localIncidencia": "Endereço do Destinatário",
+      "prestacaoServicoOnerosa": true,
+      "tipoOperacao": "Serviço prestado fisicamente sobre a pessoa ou fruído presencialmente por pessoa física"
+    },
+    {
+      "adquirenteExterior": false,
+      "cIndOp": "030104",
+      "codigoLocalFornecimento": 1,
+      "codigoLocalIncidencia": 4,
+      "localFornecimento": "Endereço diverso do fornecedor, adquirente ou destinatário",
+      "localIncidencia": "Local da Prestação",
+      "prestacaoServicoOnerosa": true,
+      "tipoOperacao": "Serviço prestado fisicamente sobre a pessoa ou fruído presencialmente por pessoa física"
+    }
+  ],
+  "corpoEnviado": null
+}

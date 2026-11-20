@@ -1,0 +1,18 @@
+{
+  "url": "http://localhost:8080/api/calculadora/base-calculo/is-mercadorias",
+  "status": 200,
+  "ms": 2,
+  "avisos": {},
+  "resposta": {
+    "baseCalculo": 790.0
+  },
+  "corpoEnviado": {
+    "anoFatoGerador": 2027,
+    "valorBem": 1000.0,
+    "juros": 10.0,
+    "freteCobrado": 30.0,
+    "icms": 180.0,
+    "ipi": 50.0,
+    "descontoIncondicional": 20.0
+  }
+}

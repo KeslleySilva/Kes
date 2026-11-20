@@ -1,0 +1,32 @@
+{
+  "url": "http://localhost:8080/api/calculadora/regime-geral",
+  "status": 422,
+  "ms": 7,
+  "avisos": {},
+  "resposta": {
+    "detail": "A classificação tributária 620001 ainda não possui tratamento tributário implementado na Calculadora. Essa funcionalidade está prevista no roadmap e será disponibilizada em versão futura.",
+    "instance": "/api/calculadora/regime-geral",
+    "status": 422,
+    "title": "Classificação tributária em desenvolvimento",
+    "type": "http://localhost/errors/erro-falta-implementacao",
+    "timestamp": "2026-11-20T00:21:01.932055163Z"
+  },
+  "corpoEnviado": {
+    "id": "C06",
+    "versao": "1.0.0",
+    "dhFatoGerador": "2026-03-10T10:00:00-03:00",
+    "municipio": 4314902,
+    "uf": "RS",
+    "itens": [
+      {
+        "numero": 1,
+        "ncm": "27101259",
+        "cst": "620",
+        "cClassTrib": "620001",
+        "baseCalculo": 200.0,
+        "quantidade": 10,
+        "unidade": "LT"
+      }
+    ]
+  }
+}

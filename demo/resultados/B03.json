@@ -1,0 +1,22 @@
+{
+  "url": "http://localhost:8080/api/calculadora/base-calculo/base-calculo-unificada-nfse",
+  "status": 200,
+  "ms": 4,
+  "avisos": {},
+  "resposta": {
+    "avisos": [],
+    "baseRG": 864.5,
+    "baseSN": null,
+    "erros": []
+  },
+  "corpoEnviado": {
+    "anoFatoGerador": 2026,
+    "opSimpNac": "1",
+    "situacao": "comum",
+    "vServ": 1000.0,
+    "vDescIncond": 50.0,
+    "vISSQN": 30.0,
+    "vPIS": 9.25,
+    "vCOFINS": 46.25
+  }
+}

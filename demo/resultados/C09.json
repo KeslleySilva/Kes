@@ -1,0 +1,87 @@
+{
+  "url": "http://localhost:8080/api/calculadora/regime-geral",
+  "status": 200,
+  "ms": 6,
+  "avisos": {
+    "x-warning-dados-simulados": "6"
+  },
+  "resposta": {
+    "objetos": [
+      {
+        "nObj": 1,
+        "tribCalc": {
+          "IBSCBS": {
+            "CST": "410",
+            "cClassTrib": "410004",
+            "memoriaCalculo": {
+              "cbs": "Operação de consumo com enquadramento legal em Art. 8º, tributada conforme Imunidade e não incidência. A base de cálculo utilizada é de R$ 5.000,00, sendo que esta operação não possui alíquota.",
+              "ibsUF": "Operação de consumo com enquadramento legal em Art. 8º, tributada conforme Imunidade e não incidência. A base de cálculo utilizada é de R$ 5.000,00, sendo que esta operação não possui alíquota.",
+              "ibsMun": "Operação de consumo com enquadramento legal em Art. 8º, tributada conforme Imunidade e não incidência. A base de cálculo utilizada é de R$ 5.000,00, sendo que esta operação não possui alíquota."
+            }
+          }
+        },
+        "calculoSimulado": true
+      }
+    ],
+    "total": {
+      "tribCalc": {
+        "IBSCBSTot": {
+          "vBCIBSCBS": "0.00",
+          "gIBS": {
+            "gIBSUF": {
+              "vDif": "0.00",
+              "vDevTrib": "0.00",
+              "vIBSUF": "0.00"
+            },
+            "gIBSMun": {
+              "vDif": "0.00",
+              "vDevTrib": "0.00",
+              "vIBSMun": "0.00"
+            },
+            "vIBS": "0.00",
+            "vCredPres": "0.00",
+            "vCredPresCondSus": "0.00"
+          },
+          "gCBS": {
+            "vDif": "0.00",
+            "vDevTrib": "0.00",
+            "vCBS": "0.00",
+            "vCredPres": "0.00",
+            "vCredPresCondSus": "0.00"
+          },
+          "gMono": {
+            "vIBSMono": "0.00",
+            "vCBSMono": "0.00",
+            "vIBSMonoReten": "0.00",
+            "vCBSMonoReten": "0.00",
+            "vIBSMonoRet": "0.00",
+            "vCBSMonoRet": "0.00"
+          }
+        }
+      }
+    }
+  },
+  "corpoEnviado": {
+    "id": "C09",
+    "versao": "1.0.0",
+    "dhFatoGerador": "2027-03-10T10:00:00-03:00",
+    "municipio": 4314902,
+    "uf": "RS",
+    "itens": [
+      {
+        "numero": 1,
+        "ncm": "84713012",
+        "cst": "410",
+        "cClassTrib": "410004",
+        "baseCalculo": 5000.0,
+        "quantidade": 1,
+        "unidade": "UN",
+        "aliquotasNominais": {
+          "cbs": 8.8,
+          "ibsEstadual": 0.05,
+          "ibsMunicipal": 0.05
+        }
+      }
+    ]
+  }
+}

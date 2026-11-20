@@ -1,0 +1,37 @@
+{
+  "url": "http://localhost:8080/api/calculadora/nfse/locais-incidencia",
+  "status": 200,
+  "ms": 2,
+  "avisos": {},
+  "resposta": [
+    {
+      "codigo": 1,
+      "descricao": "Endereço do Destinatário"
+    },
+    {
+      "codigo": 2,
+      "descricao": "Endereço do Tomador/Adquirente"
+    },
+    {
+      "codigo": 3,
+      "descricao": "Estabelecimento do Prestador/Fornecedor"
+    },
+    {
+      "codigo": 4,
+      "descricao": "Local da Prestação"
+    },
+    {
+      "codigo": 5,
+      "descricao": "Local do Evento"
+    },
+    {
+      "codigo": 6,
+      "descricao": "Localidade do Imóvel"
+    },
+    {
+      "codigo": 7,
+      "descricao": "Localização do Trecho"
+    }
+  ],
+  "corpoEnviado": null
+}

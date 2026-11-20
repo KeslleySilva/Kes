@@ -1,0 +1,14 @@
+{
+  "url": "http://localhost:8080/api/calculadora/dados-abertos/nbs?nbs=122011200&data=2027-01-01",
+  "status": 200,
+  "ms": 7,
+  "avisos": {},
+  "resposta": {
+    "capitulo": "Serviços de educação básica",
+    "item": "Serviços de pré-escola",
+    "posicao": "Serviços de educação infantil",
+    "temAliquotaAdValorem": false,
+    "tributadoPeloImpostoSeletivo": false
+  },
+  "corpoEnviado": null
+}

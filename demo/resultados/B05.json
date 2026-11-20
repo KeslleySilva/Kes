@@ -1,0 +1,19 @@
+{
+  "url": "http://localhost:8080/api/calculadora/base-calculo/cbs-ibs-mercadorias",
+  "status": 200,
+  "ms": 2,
+  "avisos": {},
+  "resposta": {
+    "baseCalculo": 762.5
+  },
+  "corpoEnviado": {
+    "anoFatoGerador": 2026,
+    "valorBem": 1000.0,
+    "frete": 30.0,
+    "impostoSeletivo": 25.0,
+    "icms": 180.0,
+    "pis": 16.5,
+    "cofins": 76.0,
+    "descontoIncondicional": 20.0
+  }
+}

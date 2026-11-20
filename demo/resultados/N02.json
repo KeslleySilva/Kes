@@ -1,0 +1,15 @@
+{
+  "url": "http://localhost:8080/api/calculadora/nfse/local-operacao?cIndOp=100301&dataOcorrenciaFatoGerador=2026-06-01",
+  "status": 200,
+  "ms": 4,
+  "avisos": {},
+  "resposta": {
+    "cIndOp": "100301",
+    "codigoLocalFornecimento": 11,
+    "codigoLocalIncidencia": 2,
+    "dataOcorrenciaFatoGerador": "2026-06-01",
+    "localFornecimento": "Local do domicílio principal do adquirente residente ou domiciliado no País. Nas aquisições indicadas no art. 11, §4º, II, considera-se domicílio principal do adquirente o estabelecimento matriz",
+    "localIncidencia": "Endereço do Tomador/Adquirente"
+  },
+  "corpoEnviado": null
+}
