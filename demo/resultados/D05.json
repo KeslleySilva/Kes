@@ -1,7 +1,7 @@
 {
-  "url": "http://localhost:8080/api/calculadora/dados-abertos/ufs",
+  "url": "http://localhost:8100/api/calculadora/dados-abertos/ufs",
   "status": 200,
-  "ms": 10,
+  "ms": 23,
   "avisos": {},
   "resposta": [
     {

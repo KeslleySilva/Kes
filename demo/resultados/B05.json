@@ -1,7 +1,7 @@
 {
-  "url": "http://localhost:8080/api/calculadora/base-calculo/cbs-ibs-mercadorias",
+  "url": "http://localhost:8100/api/calculadora/base-calculo/cbs-ibs-mercadorias",
   "status": 200,
-  "ms": 2,
+  "ms": 13,
   "avisos": {},
   "resposta": {
     "baseCalculo": 762.5

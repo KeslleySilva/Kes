@@ -1,15 +1,15 @@
 {
-  "url": "http://localhost:8080/api/calculadora/regime-geral",
+  "url": "http://localhost:8100/api/calculadora/regime-geral",
   "status": 422,
-  "ms": 5,
+  "ms": 17,
   "avisos": {},
   "resposta": {
     "detail": "NCM de código 02013000 não vinculada à Classificação Tributária de código 200035 (CBS e IBS)",
     "instance": "/api/calculadora/regime-geral",
     "status": 422,
     "title": "NCM não vinculada",
-    "type": "http://localhost/errors/ncm-nao-vinculada",
-    "timestamp": "2026-11-20T00:21:01.997711436Z"
+    "type": "http://127.0.0.1/errors/ncm-nao-vinculada",
+    "timestamp": "2026-11-20T00:31:57.865847327Z"
   },
   "corpoEnviado": {
     "id": "C13",

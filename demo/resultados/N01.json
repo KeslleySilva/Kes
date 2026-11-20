@@ -1,7 +1,7 @@
 {
-  "url": "http://localhost:8080/api/calculadora/nfse/indicador-operacao?nbs=122011200&dataOcorrenciaFatoGerador=2026-06-01",
+  "url": "http://localhost:8100/api/calculadora/nfse/indicador-operacao?nbs=122011200&dataOcorrenciaFatoGerador=2026-06-01",
   "status": 200,
-  "ms": 4,
+  "ms": 37,
   "avisos": {},
   "resposta": [
     {

@@ -1,15 +1,15 @@
 {
-  "url": "http://localhost:8080/api/calculadora/regime-geral",
+  "url": "http://localhost:8100/api/calculadora/regime-geral",
   "status": 422,
-  "ms": 7,
+  "ms": 71,
   "avisos": {},
   "resposta": {
     "detail": "A classificação tributária 620001 ainda não possui tratamento tributário implementado na Calculadora. Essa funcionalidade está prevista no roadmap e será disponibilizada em versão futura.",
     "instance": "/api/calculadora/regime-geral",
     "status": 422,
     "title": "Classificação tributária em desenvolvimento",
-    "type": "http://localhost/errors/erro-falta-implementacao",
-    "timestamp": "2026-11-20T00:21:01.932055163Z"
+    "type": "http://127.0.0.1/errors/erro-falta-implementacao",
+    "timestamp": "2026-11-20T00:31:57.602360977Z"
   },
   "corpoEnviado": {
     "id": "C06",

@@ -1,7 +1,7 @@
 {
-  "url": "http://localhost:8080/api/calculadora/nfse/local-operacao?cIndOp=100301&dataOcorrenciaFatoGerador=2026-06-01",
+  "url": "http://localhost:8100/api/calculadora/nfse/local-operacao?cIndOp=100301&dataOcorrenciaFatoGerador=2026-06-01",
   "status": 200,
-  "ms": 4,
+  "ms": 14,
   "avisos": {},
   "resposta": {
     "cIndOp": "100301",

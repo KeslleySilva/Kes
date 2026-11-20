@@ -1,7 +1,7 @@
 {
-  "url": "http://localhost:8080/api/calculadora/nfse/situacoes-classificacoes-tributarias?nbs=122011200&data=2026-06-01",
+  "url": "http://localhost:8100/api/calculadora/nfse/situacoes-classificacoes-tributarias?nbs=122011200&data=2026-06-01",
   "status": 200,
-  "ms": 5,
+  "ms": 13,
   "avisos": {},
   "resposta": [
     {

@@ -1,7 +1,7 @@
 {
-  "url": "http://localhost:8080/api/calculadora/dados-abertos/classificacoes-tributarias/cbs-ibs/200?data=2027-01-01",
+  "url": "http://localhost:8100/api/calculadora/dados-abertos/classificacoes-tributarias/cbs-ibs/200?data=2027-01-01",
   "status": 200,
-  "ms": 45,
+  "ms": 137,
   "avisos": {},
   "resposta": [
     {

@@ -1,7 +1,7 @@
 {
-  "url": "http://localhost:8080/api/calculadora/dados-abertos/aliquota-uniao?data=2026-06-01",
+  "url": "http://localhost:8100/api/calculadora/dados-abertos/aliquota-uniao?data=2026-06-01",
   "status": 200,
-  "ms": 2,
+  "ms": 10,
   "avisos": {},
   "resposta": {
     "aliquotaReferencia": 0.9

@@ -1,6 +1,6 @@
 {
-  "geradoEm": "2026-11-20T00:21:02+0000",
-  "api": "http://localhost:8080/api/calculadora",
+  "geradoEm": "2026-11-20T00:31:59+0000",
+  "api": "http://localhost:8100/api/calculadora",
   "cenarios": [
     {
       "id": "C01",
@@ -1022,9 +1022,9 @@
   ],
   "resultados": {
     "C01": {
-      "url": "http://localhost:8080/api/calculadora/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/regime-geral",
       "status": 200,
-      "ms": 32,
+      "ms": 445,
       "avisos": {},
       "resposta": {
         "objetos": [
@@ -1119,9 +1119,9 @@
       }
     },
     "C02": {
-      "url": "http://localhost:8080/api/calculadora/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/regime-geral",
       "status": 200,
-      "ms": 9,
+      "ms": 58,
       "avisos": {
         "x-warning-dados-simulados": "6"
       },
@@ -1222,9 +1222,9 @@
       }
     },
     "C03": {
-      "url": "http://localhost:8080/api/calculadora/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/regime-geral",
       "status": 200,
-      "ms": 8,
+      "ms": 47,
       "avisos": {
         "x-warning-dados-simulados": "6"
       },
@@ -1337,9 +1337,9 @@
       }
     },
     "C04": {
-      "url": "http://localhost:8080/api/calculadora/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/regime-geral",
       "status": 200,
-      "ms": 8,
+      "ms": 38,
       "avisos": {
         "x-warning-dados-simulados": "6"
       },
@@ -1450,9 +1450,9 @@
       }
     },
     "C05": {
-      "url": "http://localhost:8080/api/calculadora/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/regime-geral",
       "status": 200,
-      "ms": 8,
+      "ms": 42,
       "avisos": {
         "x-warning-dados-simulados": "6"
       },
@@ -1575,17 +1575,17 @@
       }
     },
     "C06": {
-      "url": "http://localhost:8080/api/calculadora/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/regime-geral",
       "status": 422,
-      "ms": 7,
+      "ms": 71,
       "avisos": {},
       "resposta": {
         "detail": "A classificação tributária 620001 ainda não possui tratamento tributário implementado na Calculadora. Essa funcionalidade está prevista no roadmap e será disponibilizada em versão futura.",
         "instance": "/api/calculadora/regime-geral",
         "status": 422,
         "title": "Classificação tributária em desenvolvimento",
-        "type": "http://localhost/errors/erro-falta-implementacao",
-        "timestamp": "2026-11-20T00:21:01.932055163Z"
+        "type": "http://127.0.0.1/errors/erro-falta-implementacao",
+        "timestamp": "2026-11-20T00:31:57.602360977Z"
       },
       "corpoEnviado": {
         "id": "C06",
@@ -1607,9 +1607,9 @@
       }
     },
     "C07": {
-      "url": "http://localhost:8080/api/calculadora/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/regime-geral",
       "status": 200,
-      "ms": 7,
+      "ms": 44,
       "avisos": {},
       "resposta": {
         "objetos": [
@@ -1727,9 +1727,9 @@
       }
     },
     "C08": {
-      "url": "http://localhost:8080/api/calculadora/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/regime-geral",
       "status": 200,
-      "ms": 8,
+      "ms": 44,
       "avisos": {},
       "resposta": {
         "objetos": [
@@ -1838,9 +1838,9 @@
       }
     },
     "C09": {
-      "url": "http://localhost:8080/api/calculadora/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/regime-geral",
       "status": 200,
-      "ms": 6,
+      "ms": 25,
       "avisos": {
         "x-warning-dados-simulados": "6"
       },
@@ -1925,9 +1925,9 @@
       }
     },
     "C10": {
-      "url": "http://localhost:8080/api/calculadora/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/regime-geral",
       "status": 200,
-      "ms": 8,
+      "ms": 30,
       "avisos": {
         "x-warning-dados-simulados": "6"
       },
@@ -2059,9 +2059,9 @@
       }
     },
     "C11": {
-      "url": "http://localhost:8080/api/calculadora/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/regime-geral",
       "status": 200,
-      "ms": 7,
+      "ms": 29,
       "avisos": {
         "x-warning-dados-simulados": "6"
       },
@@ -2169,9 +2169,9 @@
       }
     },
     "C12": {
-      "url": "http://localhost:8080/api/calculadora/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/regime-geral",
       "status": 200,
-      "ms": 16,
+      "ms": 25,
       "avisos": {
         "x-warning-dados-simulados": "6"
       },
@@ -2396,17 +2396,17 @@
       }
     },
     "C13": {
-      "url": "http://localhost:8080/api/calculadora/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/regime-geral",
       "status": 422,
-      "ms": 5,
+      "ms": 17,
       "avisos": {},
       "resposta": {
         "detail": "NCM de código 02013000 não vinculada à Classificação Tributária de código 200035 (CBS e IBS)",
         "instance": "/api/calculadora/regime-geral",
         "status": 422,
         "title": "NCM não vinculada",
-        "type": "http://localhost/errors/ncm-nao-vinculada",
-        "timestamp": "2026-11-20T00:21:01.997711436Z"
+        "type": "http://127.0.0.1/errors/ncm-nao-vinculada",
+        "timestamp": "2026-11-20T00:31:57.865847327Z"
       },
       "corpoEnviado": {
         "id": "C13",
@@ -2431,9 +2431,9 @@
       }
     },
     "O01": {
-      "url": "http://localhost:8080/api/calculadora/observabilidade/regime-geral",
+      "url": "http://localhost:8100/api/calculadora/observabilidade/regime-geral",
       "status": 200,
-      "ms": 16,
+      "ms": 47,
       "avisos": {
         "x-warning-dados-simulados": "6"
       },
@@ -2530,7 +2530,7 @@
             "estadoItem": "INCONSISTENCIA_ENTRADA",
             "erros": [
               {
-                "type": "http://localhost/api/calculadora/observabilidade/erros?codigo=REG-011",
+                "type": "http://127.0.0.1/api/calculadora/observabilidade/erros?codigo=REG-011",
                 "title": "NCM não vinculada",
                 "code": "REG-011",
                 "pointer": "#/itens/2/ncm",
@@ -2626,9 +2626,9 @@
       }
     },
     "O02": {
-      "url": "http://localhost:8080/api/calculadora/observabilidade/erros?codigo=REG-011",
+      "url": "http://localhost:8100/api/calculadora/observabilidade/erros?codigo=REG-011",
       "status": 200,
-      "ms": 3,
+      "ms": 15,
       "avisos": {},
       "resposta": {
         "codigo": "REG-011",
@@ -2638,9 +2638,9 @@
       "corpoEnviado": null
     },
     "P01": {
-      "url": "http://localhost:8080/api/calculadora/pedagio",
+      "url": "http://localhost:8100/api/calculadora/pedagio",
       "status": 200,
-      "ms": 10,
+      "ms": 44,
       "avisos": {},
       "resposta": {
         "baseCalculo": 200.0,
@@ -2769,9 +2769,9 @@
       }
     },
     "B01": {
-      "url": "http://localhost:8080/api/calculadora/base-calculo/base-calculo-unificada",
+      "url": "http://localhost:8100/api/calculadora/base-calculo/base-calculo-unificada",
       "status": 200,
-      "ms": 4,
+      "ms": 29,
       "avisos": {},
       "resposta": {
         "avisos": [
@@ -2798,9 +2798,9 @@
       }
     },
     "B02": {
-      "url": "http://localhost:8080/api/calculadora/base-calculo/base-calculo-unificada",
+      "url": "http://localhost:8100/api/calculadora/base-calculo/base-calculo-unificada",
       "status": 200,
-      "ms": 2,
+      "ms": 8,
       "avisos": {},
       "resposta": {
         "avisos": [
@@ -2828,9 +2828,9 @@
       }
     },
     "B03": {
-      "url": "http://localhost:8080/api/calculadora/base-calculo/base-calculo-unificada-nfse",
+      "url": "http://localhost:8100/api/calculadora/base-calculo/base-calculo-unificada-nfse",
       "status": 200,
-      "ms": 4,
+      "ms": 21,
       "avisos": {},
       "resposta": {
         "avisos": [],
@@ -2850,9 +2850,9 @@
       }
     },
     "B04": {
-      "url": "http://localhost:8080/api/calculadora/base-calculo/is-mercadorias",
+      "url": "http://localhost:8100/api/calculadora/base-calculo/is-mercadorias",
       "status": 200,
-      "ms": 2,
+      "ms": 14,
       "avisos": {},
       "resposta": {
         "baseCalculo": 790.0
@@ -2868,9 +2868,9 @@
       }
     },
     "B05": {
-      "url": "http://localhost:8080/api/calculadora/base-calculo/cbs-ibs-mercadorias",
+      "url": "http://localhost:8100/api/calculadora/base-calculo/cbs-ibs-mercadorias",
       "status": 200,
-      "ms": 2,
+      "ms": 13,
       "avisos": {},
       "resposta": {
         "baseCalculo": 762.5
@@ -2887,9 +2887,9 @@
       }
     },
     "B06": {
-      "url": "http://localhost:8080/api/calculadora/nfse/base-calculo",
+      "url": "http://localhost:8100/api/calculadora/nfse/base-calculo",
       "status": 200,
-      "ms": 2,
+      "ms": 12,
       "avisos": {},
       "resposta": {
         "baseCalculo": 863.5
@@ -2904,9 +2904,9 @@
       }
     },
     "N01": {
-      "url": "http://localhost:8080/api/calculadora/nfse/indicador-operacao?nbs=122011200&dataOcorrenciaFatoGerador=2026-06-01",
+      "url": "http://localhost:8100/api/calculadora/nfse/indicador-operacao?nbs=122011200&dataOcorrenciaFatoGerador=2026-06-01",
       "status": 200,
-      "ms": 4,
+      "ms": 37,
       "avisos": {},
       "resposta": [
         {
@@ -2953,9 +2953,9 @@
       "corpoEnviado": null
     },
     "N02": {
-      "url": "http://localhost:8080/api/calculadora/nfse/local-operacao?cIndOp=100301&dataOcorrenciaFatoGerador=2026-06-01",
+      "url": "http://localhost:8100/api/calculadora/nfse/local-operacao?cIndOp=100301&dataOcorrenciaFatoGerador=2026-06-01",
       "status": 200,
-      "ms": 4,
+      "ms": 14,
       "avisos": {},
       "resposta": {
         "cIndOp": "100301",
@@ -2968,9 +2968,9 @@
       "corpoEnviado": null
     },
     "N03": {
-      "url": "http://localhost:8080/api/calculadora/nfse/indicador-operacao/validate",
+      "url": "http://localhost:8100/api/calculadora/nfse/indicador-operacao/validate",
       "status": 200,
-      "ms": 4,
+      "ms": 16,
       "avisos": {},
       "resposta": {
         "cClassTrib": "200028",
@@ -2987,9 +2987,9 @@
       }
     },
     "N04": {
-      "url": "http://localhost:8080/api/calculadora/nfse/situacoes-classificacoes-tributarias?nbs=122011200&data=2026-06-01",
+      "url": "http://localhost:8100/api/calculadora/nfse/situacoes-classificacoes-tributarias?nbs=122011200&data=2026-06-01",
       "status": 200,
-      "ms": 5,
+      "ms": 13,
       "avisos": {},
       "resposta": [
         {
@@ -3002,9 +3002,9 @@
       "corpoEnviado": null
     },
     "N05": {
-      "url": "http://localhost:8080/api/calculadora/nfse/locais-fornecimento",
+      "url": "http://localhost:8100/api/calculadora/nfse/locais-fornecimento",
       "status": 200,
-      "ms": 3,
+      "ms": 8,
       "avisos": {},
       "resposta": [
         {
@@ -3127,9 +3127,9 @@
       "corpoEnviado": null
     },
     "N06": {
-      "url": "http://localhost:8080/api/calculadora/nfse/locais-incidencia",
+      "url": "http://localhost:8100/api/calculadora/nfse/locais-incidencia",
       "status": 200,
-      "ms": 2,
+      "ms": 6,
       "avisos": {},
       "resposta": [
         {
@@ -3164,9 +3164,9 @@
       "corpoEnviado": null
     },
     "X01": {
-      "url": "http://localhost:8080/api/calculadora/xml/generate",
+      "url": "http://localhost:8100/api/calculadora/xml/generate",
       "status": 200,
-      "ms": 2,
+      "ms": 6,
       "avisos": {},
       "resposta": [
         {
@@ -3208,25 +3208,25 @@
       "corpoEnviado": null
     },
     "X02": {
-      "url": "http://localhost:8080/api/calculadora/xml/generate?tipo=nfe",
+      "url": "http://localhost:8100/api/calculadora/xml/generate?tipo=nfe",
       "status": 200,
-      "ms": 14,
+      "ms": 251,
       "avisos": {},
       "resposta": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<infNFe xmlns=\"http://www.portalfiscal.inf.br/nfe\">\n    <det nItem=\"1\">\n        <imposto>\n            <IBSCBS>\n                <CST>000</CST>\n                <cClassTrib>000001</cClassTrib>\n                <gIBSCBS>\n                    <vBC>1000.00</vBC>\n                    <gIBSUF>\n                        <pIBSUF>0.05</pIBSUF>\n                        <vIBSUF>0.50</vIBSUF>\n                    </gIBSUF>\n                    <gIBSMun>\n                        <pIBSMun>0.05</pIBSMun>\n                        <vIBSMun>0.50</vIBSMun>\n                    </gIBSMun>\n                    <vIBS>1.00</vIBS>\n                    <gCBS>\n                        <pCBS>8.80</pCBS>\n                        <vCBS>88.00</vCBS>\n                    </gCBS>\n                </gIBSCBS>\n            </IBSCBS>\n        </imposto>\n    </det>\n    <det nItem=\"2\">\n        <imposto>\n            <IBSCBS>\n                <CST>200</CST>\n                <cClassTrib>200003</cClassTrib>\n                <gIBSCBS>\n                    <vBC>100.00</vBC>\n                    <gIBSUF>\n                        <pIBSUF>0.05</pIBSUF>\n                        <gRed>\n                            <pRedAliq>100.00</pRedAliq>\n                            <pAliqEfet>0.00</pAliqEfet>\n                        </gRed>\n                        <vIBSUF>0.00</vIBSUF>\n                    </gIBSUF>\n                    <gIBSMun>\n                        <pIBSMun>0.05</pIBSMun>\n                        <gRed>\n                            <pRedAliq>100.00</pRedAliq>\n                            <pAliqEfet>0.00</pAliqEfet>\n                        </gRed>\n                        <vIBSMun>0.00</vIBSMun>\n                    </gIBSMun>\n                    <vIBS>0.00</vIBS>\n                    <gCBS>\n                        <pCBS>8.80</pCBS>\n                        <gRed>\n                            <pRedAliq>100.00</pRedAliq>\n                            <pAliqEfet>0.00</pAliqEfet>\n                        </gRed>\n                        <vCBS>0.00</vCBS>\n                    </gCBS>\n                </gIBSCBS>\n            </IBSCBS>\n        </imposto>\n    </det>\n    <det nItem=\"3\">\n        <imposto>\n            <IS>\n                <CSTIS>000</CSTIS>\n                <cClassTribIS>000001</cClassTribIS>\n                <vBCIS>150.00</vBCIS>\n                <pIS>10.00</pIS>\n                <uTrib>LT</uTrib>\n                <qTrib>12</qTrib>\n                <vIS>15.00</vIS>\n            </IS>\n            <IBSCBS>\n                <CST>000</CST>\n                <cClassTrib>000001</cClassTrib>\n                <gIBSCBS>\n                    <vBC>165.00</vBC>\n                    <gIBSUF>\n                        <pIBSUF>0.05</pIBSUF>\n                        <vIBSUF>0.08</vIBSUF>\n                    </gIBSUF>\n                    <gIBSMun>\n                        <pIBSMun>0.05</pIBSMun>\n                        <vIBSMun>0.08</vIBSMun>\n                    </gIBSMun>\n                    <vIBS>0.16</vIBS>\n                    <gCBS>\n                        <pCBS>8.80</pCBS>\n                        <vCBS>14.52</vCBS>\n                    </gCBS>\n                </gIBSCBS>\n            </IBSCBS>\n        </imposto>\n    </det>\n    <total>\n        <ISTot>\n            <vIS>15.00</vIS>\n        </ISTot>\n        <IBSCBSTot>\n            <vBCIBSCBS>1265.00</vBCIBSCBS>\n            <gIBS>\n                <gIBSUF>\n                    <vDif>0.00</vDif>\n                    <vDevTrib>0.00</vDevTrib>\n                    <vIBSUF>0.58</vIBSUF>\n                </gIBSUF>\n                <gIBSMun>\n                    <vDif>0.00</vDif>\n                    <vDevTrib>0.00</vDevTrib>\n                    <vIBSMun>0.58</vIBSMun>\n                </gIBSMun>\n                <vIBS>1.16</vIBS>\n                <vCredPres>0.00</vCredPres>\n                <vCredPresCondSus>0.00</vCredPresCondSus>\n            </gIBS>\n            <gCBS>\n                <vDif>0.00</vDif>\n                <vDevTrib>0.00</vDevTrib>\n                <vCBS>102.52</vCBS>\n                <vCredPres>0.00</vCredPres>\n                <vCredPresCondSus>0.00</vCredPresCondSus>\n            </gCBS>\n            <gMono>\n                <vIBSMono>0.00</vIBSMono>\n                <vCBSMono>0.00</vCBSMono>\n                <vIBSMonoReten>0.00</vIBSMonoReten>\n                <vCBSMonoReten>0.00</vCBSMonoReten>\n                <vIBSMonoRet>0.00</vIBSMonoRet>\n                <vCBSMonoRet>0.00</vCBSMonoRet>\n            </gMono>\n        </IBSCBSTot>\n    </total>\n</infNFe>\n",
       "corpoEnviado": "{\"objetos\":[{\"nObj\":1,\"tribCalc\":{\"IBSCBS\":{\"CST\":\"000\",\"cClassTrib\":\"000001\",\"gIBSCBS\":{\"vBC\":\"1000.00\",\"gIBSUF\":{\"pIBSUF\":\"0.05\",\"vIBSUF\":\"0.50\"},\"gIBSMun\":{\"pIBSMun\":\"0.05\",\"vIBSMun\":\"0.50\"},\"vIBS\":\"1.00\",\"gCBS\":{\"pCBS\":\"8.80\",\"vCBS\":\"88.00\"}},\"memoriaCalculo\":{\"cbs\":\"Operação de consumo com enquadramento legal em LC 214/2025, tributada conforme Tributação integral. A base de cálculo utilizada é de R$ 1.000,00, com alíquota de 8,80%.\",\"ibsUF\":\"Operação de consumo com enquadramento legal em LC 214/2025, tributada conforme Tributação integral. A base de cálculo utilizada é de R$ 1.000,00, com alíquota de 0,05%.\",\"ibsMun\":\"Operação de consumo com enquadramento legal em LC 214/2025, tributada conforme Tributação integral. A base de cálculo utilizada é de R$ 1.000,00, com alíquota de 0,05%.\"}}},\"calculoSimulado\":true},{\"nObj\":2,\"tribCalc\":{\"IBSCBS\":{\"CST\":\"200\",\"cClassTrib\":\"200003\",\"gIBSCBS\":{\"vBC\":\"100.00\",\"gIBSUF\":{\"pIBSUF\":\"0.05\",\"gRed\":{\"pRedAliq\":\"100.00\",\"pAliqEfet\":\"0.00\"},\"vIBSUF\":\"0.00\"},\"gIBSMun\":{\"pIBSMun\":\"0.05\",\"gRed\":{\"pRedAliq\":\"100.00\",\"pAliqEfet\":\"0.00\"},\"vIBSMun\":\"0.00\"},\"vIBS\":\"0.00\",\"gCBS\":{\"pCBS\":\"8.80\",\"gRed\":{\"pRedAliq\":\"100.00\",\"pAliqEfet\":\"0.00\"},\"vCBS\":\"0.00\"}},\"memoriaCalculo\":{\"cbs\":\"Operação de consumo com enquadramento legal em Art. 125, tributada conforme Alíquota zero. A base de cálculo utilizada é de R$ 100,00, com alíquota de zero.\",\"ibsUF\":\"Operação de consumo com enquadramento legal em Art. 125, tributada conforme Alíquota zero. A base de cálculo utilizada é de R$ 100,00, com alíquota de zero.\",\"ibsMun\":\"Operação de consumo com enquadramento legal em Art. 125, tributada conforme Alíquota zero. A base de cálculo utilizada é de R$ 100,00, com alíquota de zero.\"}}},\"calculoSimulado\":true},{\"nObj\":3,\"tribCalc\":{\"IS\":{\"CSTIS\":\"000\",\"cClassTribIS\":\"000001\",\"vBCIS\":\"150.00\",\"pIS\":\"10.00\",\"uTrib\":\"LT\",\"qTrib\":\"12\",\"vIS\":\"15.00\",\"memoriaCalculo\":\"Operação de consumo sujeita à tributação pelo Imposto Seletivo, com enquadramento legal em Art. 412, I, tributada conforme Tributação pelo Imposto Seletivo - Com Cálculo. A base de cálculo utilizada é de R$ 150,00, com alíquota ad valorem de 10,00%. A alíquota ad rem é de 0,00.\"},\"IBSCBS\":{\"CST\":\"000\",\"cClassTrib\":\"000001\",\"gIBSCBS\":{\"vBC\":\"165.00\",\"gIBSUF\":{\"pIBSUF\":\"0.05\",\"vIBSUF\":\"0.08\"},\"gIBSMun\":{\"pIBSMun\":\"0.05\",\"vIBSMun\":\"0.08\"},\"vIBS\":\"0.16\",\"gCBS\":{\"pCBS\":\"8.80\",\"vCBS\":\"14.52\"}},\"memoriaCalculo\":{\"cbs\":\"Operação de consumo com enquadramento legal em LC 214/2025, tributada conforme Tributação integral. A base de cálculo utilizada é de R$ 165,00, com alíquota de 8,80%.\",\"ibsUF\":\"Operação de consumo com enquadramento legal em LC 214/2025, tributada conforme Tributação integral. A base de cálculo utilizada é de R$ 165,00, com alíquota de 0,05%.\",\"ibsMun\":\"Operação de consumo com enquadramento legal em LC 214/2025, tributada conforme Tributação integral. A base de cálculo utilizada é de R$ 165,00, com alíquota de 0,05%.\"}}},\"calculoSimulado\":true}],\"total\":{\"tribCalc\":{\"ISTot\":{\"vIS\":\"15.00\"},\"IBSCBSTot\":{\"vBCIBSCBS\":\"1265.00\",\"gIBS\":{\"gIBSUF\":{\"vDif\":\"0.00\",\"vDevTrib\":\"0.00\",\"vIBSUF\":\"0.58\"},\"gIBSMun\":{\"vDif\":\"0.00\",\"vDevTrib\":\"0.00\",\"vIBSMun\":\"0.58\"},\"vIBS\":\"1.16\",\"vCredPres\":\"0.00\",\"vCredPresCondSus\":\"0.00\"},\"gCBS\":{\"vDif\":\"0.00\",\"vDevTrib\":\"0.00\",\"vCBS\":\"102.52\",\"vCredPres\":\"0.00\",\"vCredPresCondSus\":\"0.00\"},\"gMono\":{\"vIBSMono\":\"0.00\",\"vCBSMono\":\"0.00\",\"vIBSMonoReten\":\"0.00\",\"vCBSMonoReten\":\"0.00\",\"vIBSMonoRet\":\"0.00\",\"vCBSMonoRet\":\"0.00\"}}}}}"
     },
     "X03": {
-      "url": "http://localhost:8080/api/calculadora/xml/validate?tipo=nfe&subtipo=grupo",
+      "url": "http://localhost:8100/api/calculadora/xml/validate?tipo=nfe&subtipo=grupo",
       "status": 200,
-      "ms": 12,
+      "ms": 104,
       "avisos": {},
       "resposta": true,
       "corpoEnviado": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<infNFe xmlns=\"http://www.portalfiscal.inf.br/nfe\">\n    <det nItem=\"1\">\n        <imposto>\n            <IBSCBS>\n                <CST>000</CST>\n                <cClassTrib>000001</cClassTrib>\n                <gIBSCBS>\n                    <vBC>1000.00</vBC>\n                    <gIBSUF>\n                        <pIBSUF>0.05</pIBSUF>\n                        <vIBSUF>0.50</vIBSUF>\n                    </gIBSUF>\n                    <gIBSMun>\n                        <pIBSMun>0.05</pIBSMun>\n                        <vIBSMun>0.50</vIBSMun>\n                    </gIBSMun>\n                    <vIBS>1.00</vIBS>\n                    <gCBS>\n                        <pCBS>8.80</pCBS>\n                        <vCBS>88.00</vCBS>\n                    </gCBS>\n                </gIBSCBS>\n            </IBSCBS>\n        </imposto>\n    </det>\n    <det nItem=\"2\">\n        <imposto>\n            <IBSCBS>\n                <CST>200</CST>\n                <cClassTrib>200003</cClassTrib>\n                <gIBSCBS>\n                    <vBC>100.00</vBC>\n                    <gIBSUF>\n                        <pIBSUF>0.05</pIBSUF>\n                        <gRed>\n                            <pRedAliq>100.00</pRedAliq>\n                            <pAliqEfet>0.00</pAliqEfet>\n                        </gRed>\n                        <vIBSUF>0.00</vIBSUF>\n                    </gIBSUF>\n                    <gIBSMun>\n                        <pIBSMun>0.05</pIBSMun>\n                        <gRed>\n                            <pRedAliq>100.00</pRedAliq>\n                            <pAliqEfet>0.00</pAliqEfet>\n                        </gRed>\n                        <vIBSMun>0.00</vIBSMun>\n                    </gIBSMun>\n                    <vIBS>0.00</vIBS>\n                    <gCBS>\n                        <pCBS>8.80</pCBS>\n                        <gRed>\n                            <pRedAliq>100.00</pRedAliq>\n                            <pAliqEfet>0.00</pAliqEfet>\n                        </gRed>\n                        <vCBS>0.00</vCBS>\n                    </gCBS>\n                </gIBSCBS>\n            </IBSCBS>\n        </imposto>\n    </det>\n    <det nItem=\"3\">\n        <imposto>\n            <IS>\n                <CSTIS>000</CSTIS>\n                <cClassTribIS>000001</cClassTribIS>\n                <vBCIS>150.00</vBCIS>\n                <pIS>10.00</pIS>\n                <uTrib>LT</uTrib>\n                <qTrib>12</qTrib>\n                <vIS>15.00</vIS>\n            </IS>\n            <IBSCBS>\n                <CST>000</CST>\n                <cClassTrib>000001</cClassTrib>\n                <gIBSCBS>\n                    <vBC>165.00</vBC>\n                    <gIBSUF>\n                        <pIBSUF>0.05</pIBSUF>\n                        <vIBSUF>0.08</vIBSUF>\n                    </gIBSUF>\n                    <gIBSMun>\n                        <pIBSMun>0.05</pIBSMun>\n                        <vIBSMun>0.08</vIBSMun>\n                    </gIBSMun>\n                    <vIBS>0.16</vIBS>\n                    <gCBS>\n                        <pCBS>8.80</pCBS>\n                        <vCBS>14.52</vCBS>\n                    </gCBS>\n                </gIBSCBS>\n            </IBSCBS>\n        </imposto>\n    </det>\n    <total>\n        <ISTot>\n            <vIS>15.00</vIS>\n        </ISTot>\n        <IBSCBSTot>\n            <vBCIBSCBS>1265.00</vBCIBSCBS>\n            <gIBS>\n                <gIBSUF>\n                    <vDif>0.00</vDif>\n                    <vDevTrib>0.00</vDevTrib>\n                    <vIBSUF>0.58</vIBSUF>\n                </gIBSUF>\n                <gIBSMun>\n                    <vDif>0.00</vDif>\n                    <vDevTrib>0.00</vDevTrib>\n                    <vIBSMun>0.58</vIBSMun>\n                </gIBSMun>\n                <vIBS>1.16</vIBS>\n                <vCredPres>0.00</vCredPres>\n                <vCredPresCondSus>0.00</vCredPresCondSus>\n            </gIBS>\n            <gCBS>\n                <vDif>0.00</vDif>\n                <vDevTrib>0.00</vDevTrib>\n                <vCBS>102.52</vCBS>\n                <vCredPres>0.00</vCredPres>\n                <vCredPresCondSus>0.00</vCredPresCondSus>\n            </gCBS>\n            <gMono>\n                <vIBSMono>0.00</vIBSMono>\n                <vCBSMono>0.00</vCBSMono>\n                <vIBSMonoReten>0.00</vIBSMonoReten>\n                <vCBSMonoReten>0.00</vCBSMonoReten>\n                <vIBSMonoRet>0.00</vIBSMonoRet>\n                <vCBSMonoRet>0.00</vCBSMonoRet>\n            </gMono>\n        </IBSCBSTot>\n    </total>\n</infNFe>\n"
     },
     "D01": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/versao",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/versao",
       "status": 200,
-      "ms": 2,
+      "ms": 6,
       "avisos": {},
       "resposta": {
         "ambiente": "offline",
@@ -3239,9 +3239,9 @@
       "corpoEnviado": null
     },
     "D02": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/aliquota-uniao?data=2026-06-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/aliquota-uniao?data=2026-06-01",
       "status": 200,
-      "ms": 2,
+      "ms": 10,
       "avisos": {},
       "resposta": {
         "aliquotaReferencia": 0.9
@@ -3249,9 +3249,9 @@
       "corpoEnviado": null
     },
     "D03": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/aliquota-uf?codigoUf=35&data=2026-06-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/aliquota-uf?codigoUf=35&data=2026-06-01",
       "status": 200,
-      "ms": 3,
+      "ms": 7,
       "avisos": {},
       "resposta": {
         "aliquotaReferencia": 0.1
@@ -3259,9 +3259,9 @@
       "corpoEnviado": null
     },
     "D04": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/aliquota-municipio?codigoMunicipio=3550308&data=2026-06-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/aliquota-municipio?codigoMunicipio=3550308&data=2026-06-01",
       "status": 200,
-      "ms": 2,
+      "ms": 7,
       "avisos": {},
       "resposta": {
         "aliquotaReferencia": 0.0
@@ -3269,9 +3269,9 @@
       "corpoEnviado": null
     },
     "D05": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/ufs",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/ufs",
       "status": 200,
-      "ms": 10,
+      "ms": 23,
       "avisos": {},
       "resposta": [
         {
@@ -3418,9 +3418,9 @@
       "corpoEnviado": null
     },
     "D06": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/ufs/municipios?siglaUf=RS",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/ufs/municipios?siglaUf=RS",
       "status": 200,
-      "ms": 9,
+      "ms": 26,
       "avisos": {},
       "resposta": [
         {
@@ -5415,9 +5415,9 @@
       "corpoEnviado": null
     },
     "D07": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/situacoes-tributarias/cbs-ibs?data=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/situacoes-tributarias/cbs-ibs?data=2027-01-01",
       "status": 200,
-      "ms": 5,
+      "ms": 12,
       "avisos": {},
       "resposta": [
         {
@@ -6242,9 +6242,9 @@
       "corpoEnviado": null
     },
     "D08": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/classificacoes-tributarias/cbs-ibs/class-trib/200028?data=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/classificacoes-tributarias/cbs-ibs/class-trib/200028?data=2027-01-01",
       "status": 200,
-      "ms": 6,
+      "ms": 15,
       "avisos": {},
       "resposta": {
         "codigo": "200028",
@@ -6276,9 +6276,9 @@
       "corpoEnviado": null
     },
     "D09": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/classificacoes-tributarias/cbs-ibs/200?data=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/classificacoes-tributarias/cbs-ibs/200?data=2027-01-01",
       "status": 200,
-      "ms": 45,
+      "ms": 137,
       "avisos": {},
       "resposta": [
         {
@@ -7887,9 +7887,9 @@
       "corpoEnviado": null
     },
     "D10": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/classificacoes-tributarias/cbs-ibs/por-atores?data=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/classificacoes-tributarias/cbs-ibs/por-atores?data=2027-01-01",
       "status": 200,
-      "ms": 122,
+      "ms": 196,
       "avisos": {},
       "resposta": [
         {
@@ -13541,9 +13541,9 @@
       "corpoEnviado": null
     },
     "D11": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/situacoes-tributarias/imposto-seletivo?data=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/situacoes-tributarias/imposto-seletivo?data=2027-01-01",
       "status": 200,
-      "ms": 4,
+      "ms": 16,
       "avisos": {},
       "resposta": [
         {
@@ -13585,9 +13585,9 @@
       "corpoEnviado": null
     },
     "D12": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/classificacoes-tributarias/imposto-seletivo?data=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/classificacoes-tributarias/imposto-seletivo?data=2027-01-01",
       "status": 200,
-      "ms": 15,
+      "ms": 29,
       "avisos": {
         "x-warning-dados-simulados": "1"
       },
@@ -14031,9 +14031,9 @@
       "corpoEnviado": null
     },
     "D13": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/ncm?ncm=22030000&data=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/ncm?ncm=22030000&data=2027-01-01",
       "status": 200,
-      "ms": 10,
+      "ms": 19,
       "avisos": {
         "x-warning-dados-simulados": "1"
       },
@@ -14047,9 +14047,9 @@
       "corpoEnviado": null
     },
     "D14": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/nbs?nbs=122011200&data=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/nbs?nbs=122011200&data=2027-01-01",
       "status": 200,
-      "ms": 7,
+      "ms": 15,
       "avisos": {},
       "resposta": {
         "capitulo": "Serviços de educação básica",
@@ -14061,9 +14061,9 @@
       "corpoEnviado": null
     },
     "D15": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/classificacoes-tributarias/ncm-aplicavel?cClassTrib=200003&ncm=10063021&dataOcorrenciaFatoGerador=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/classificacoes-tributarias/ncm-aplicavel?cClassTrib=200003&ncm=10063021&dataOcorrenciaFatoGerador=2027-01-01",
       "status": 200,
-      "ms": 2,
+      "ms": 13,
       "avisos": {},
       "resposta": {
         "cClassTrib": "200003",
@@ -14074,9 +14074,9 @@
       "corpoEnviado": null
     },
     "D16": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/classificacoes-tributarias/nbs-aplicavel?cClassTrib=200028&nbs=122011200&dataOcorrenciaFatoGerador=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/classificacoes-tributarias/nbs-aplicavel?cClassTrib=200028&nbs=122011200&dataOcorrenciaFatoGerador=2027-01-01",
       "status": 200,
-      "ms": 2,
+      "ms": 10,
       "avisos": {},
       "resposta": {
         "cClassTrib": "200028",
@@ -14087,9 +14087,9 @@
       "corpoEnviado": null
     },
     "D17": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/classificacoes-tributarias/nbs?nbs=122011200&data=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/classificacoes-tributarias/nbs?nbs=122011200&data=2027-01-01",
       "status": 200,
-      "ms": 2,
+      "ms": 19,
       "avisos": {},
       "resposta": [
         "000001",
@@ -14177,9 +14177,9 @@
       "corpoEnviado": null
     },
     "D18": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/fundamentacoes-legais?data=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/fundamentacoes-legais?data=2027-01-01",
       "status": 200,
-      "ms": 57,
+      "ms": 145,
       "avisos": {},
       "resposta": [
         {
@@ -15886,9 +15886,9 @@
       "corpoEnviado": null
     },
     "D19": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/dfe/grupos?data=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/dfe/grupos?data=2027-01-01",
       "status": 200,
-      "ms": 3,
+      "ms": 13,
       "avisos": {},
       "resposta": [
         {
@@ -16074,9 +16074,9 @@
       "corpoEnviado": null
     },
     "D20": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/ator/grupos?data=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/ator/grupos?data=2027-01-01",
       "status": 200,
-      "ms": 3,
+      "ms": 11,
       "avisos": {},
       "resposta": [
         {
@@ -16652,9 +16652,9 @@
       "corpoEnviado": null
     },
     "D21": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/nomenclatura/NFe/000001?data=2027-01-01",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/nomenclatura/NFe/000001?data=2027-01-01",
       "status": 200,
-      "ms": 3,
+      "ms": 13,
       "avisos": {},
       "resposta": {
         "cClassTrib": "000001",
@@ -16668,9 +16668,9 @@
       "corpoEnviado": null
     },
     "D22": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/redutores-compra-governamental",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/redutores-compra-governamental",
       "status": 200,
-      "ms": 2,
+      "ms": 9,
       "avisos": {},
       "resposta": [
         {
@@ -16681,9 +16681,9 @@
       "corpoEnviado": null
     },
     "D23": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/transferencias-cbs",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/transferencias-cbs",
       "status": 200,
-      "ms": 3,
+      "ms": 8,
       "avisos": {},
       "resposta": [
         {
@@ -16719,9 +16719,9 @@
       "corpoEnviado": null
     },
     "D24": {
-      "url": "http://localhost:8080/api/calculadora/dados-abertos/transferencias-ibs",
+      "url": "http://localhost:8100/api/calculadora/dados-abertos/transferencias-ibs",
       "status": 200,
-      "ms": 2,
+      "ms": 5,
       "avisos": {},
       "resposta": [
         {

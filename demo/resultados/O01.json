@@ -1,7 +1,7 @@
 {
-  "url": "http://localhost:8080/api/calculadora/observabilidade/regime-geral",
+  "url": "http://localhost:8100/api/calculadora/observabilidade/regime-geral",
   "status": 200,
-  "ms": 16,
+  "ms": 47,
   "avisos": {
     "x-warning-dados-simulados": "6"
   },
@@ -98,7 +98,7 @@
         "estadoItem": "INCONSISTENCIA_ENTRADA",
         "erros": [
           {
-            "type": "http://localhost/api/calculadora/observabilidade/erros?codigo=REG-011",
+            "type": "http://127.0.0.1/api/calculadora/observabilidade/erros?codigo=REG-011",
             "title": "NCM não vinculada",
             "code": "REG-011",
             "pointer": "#/itens/2/ncm",

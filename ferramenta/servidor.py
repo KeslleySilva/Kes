@@ -74,7 +74,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--porta", type=int, default=int(os.environ.get("PORTA", 8000)))
+    ap.add_argument("--porta", type=int, default=int(os.environ.get("PORT") or os.environ.get("PORTA") or 8000))
     ap.add_argument("--api", default=os.environ.get("RTC_API_URL", "http://localhost:8080/api"))
     a = ap.parse_args()
     Handler.api = a.api

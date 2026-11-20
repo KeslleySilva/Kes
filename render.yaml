@@ -1,0 +1,11 @@
+# Blueprint do Render: New + > Blueprint > selecione este repositório.
+services:
+  - type: web
+    name: calculadora-rtc
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/calculadora/dados-abertos/versao
+    envVars:
+      - key: PORT
+        value: "8000"

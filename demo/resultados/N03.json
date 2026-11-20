@@ -1,7 +1,7 @@
 {
-  "url": "http://localhost:8080/api/calculadora/nfse/indicador-operacao/validate",
+  "url": "http://localhost:8100/api/calculadora/nfse/indicador-operacao/validate",
   "status": 200,
-  "ms": 4,
+  "ms": 16,
   "avisos": {},
   "resposta": {
     "cClassTrib": "200028",

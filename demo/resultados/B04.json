@@ -1,7 +1,7 @@
 {
-  "url": "http://localhost:8080/api/calculadora/base-calculo/is-mercadorias",
+  "url": "http://localhost:8100/api/calculadora/base-calculo/is-mercadorias",
   "status": 200,
-  "ms": 2,
+  "ms": 14,
   "avisos": {},
   "resposta": {
     "baseCalculo": 790.0

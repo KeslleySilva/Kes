@@ -1,7 +1,7 @@
 {
-  "url": "http://localhost:8080/api/calculadora/dados-abertos/ncm?ncm=22030000&data=2027-01-01",
+  "url": "http://localhost:8100/api/calculadora/dados-abertos/ncm?ncm=22030000&data=2027-01-01",
   "status": 200,
-  "ms": 10,
+  "ms": 19,
   "avisos": {
     "x-warning-dados-simulados": "1"
   },

@@ -22,6 +22,24 @@ python3 ferramenta/servidor.py             # abra http://localhost:8000
 
 Se a API estiver em outro endereço: `python3 ferramenta/servidor.py --api http://servidor:8080/api`.
 
+## Publicar na web (servidor com a API oficial)
+
+O `Dockerfile` monta uma imagem única com a API oficial (Java 25, baixada do repositório da Receita na hora do build) e a interface web. Ela responde em uma só porta (`$PORT`, padrão 8000). Foi testada com 512 MB de memória: sobe em cerca de 12 segundos e roda os 55 cenários.
+
+**Render (plano gratuito):**
+1. Crie uma conta em https://render.com e conecte seu GitHub.
+2. Clique em **New + → Blueprint** e escolha este repositório e o branch. O Render lê o `render.yaml`.
+3. Clique em **Apply**. O primeiro build leva de 5 a 10 minutos. Depois disso, a ferramenta fica em `https://calculadora-rtc-XXXX.onrender.com`.
+
+No plano gratuito, o serviço "dorme" após 15 minutos sem acesso. O primeiro acesso depois disso leva cerca de 1 minuto.
+
+**Qualquer outro serviço com Docker (Railway, Fly.io, VPS):**
+```bash
+docker build -t calculadora-rtc .
+docker run -p 8000:8000 calculadora-rtc        # http://localhost:8000
+```
+Para fixar uma versão da calculadora oficial, use `docker build --build-arg RTC_REF=<tag-ou-commit> .`.
+
 ## O que a ferramenta faz
 
 | Aba | O que faz |
