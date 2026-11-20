@@ -22,9 +22,25 @@ python3 ferramenta/servidor.py             # abra http://localhost:8000
 
 Se a API estiver em outro endereço: `python3 ferramenta/servidor.py --api http://servidor:8080/api`.
 
+## Versão web (sem servidor)
+
+A pasta `web-estatica/` tem a mesma interface, mas o cálculo roda no navegador:
+- **`motor.js`**: tradução para JavaScript dos serviços Java de cálculo da calculadora oficial.
+- **`dados/`**: as tabelas oficiais, extraídas do banco por `gerar_dados.py`.
+
+O motor não tem fórmulas próprias. Ele avalia as expressões guardadas na tabela oficial `TRATAMENTO_TRIBUTARIO`, com aritmética decimal e arredondamento HALF_EVEN, como a API.
+
+**Conferência com a API oficial:** `web-estatica/testes/comparar_com_api.js` envia os mesmos casos ao motor e à API v1.7.2 e compara as respostas campo a campo. São 1.219 casos: todas as cClassTribs em 2026 e 2027, compras governamentais, tributação regular, Imposto Seletivo, arredondamento, bases de cálculo e erros. **Todos deram resultado idêntico.**
+
+```bash
+NODE_PATH=<pasta com decimal.js> node web-estatica/testes/comparar_com_api.js http://localhost:8080/api/calculadora
+```
+
+O que fica só na versão com servidor: XML, pedágio, funções de NFS-e e alguns detalhes de validação de nomenclatura por tipo de documento.
+
 ## Publicar na web (servidor com a API oficial)
 
-O `Dockerfile` monta uma imagem única com a API oficial (Java 25, baixada do repositório da Receita na hora do build) e a interface web. Ela responde em uma só porta (`$PORT`, padrão 8000). Foi testada com 512 MB de memória: sobe em cerca de 12 segundos e roda os 55 cenários.
+O `Dockerfile` monta uma imagem única com a API oficial (Java 25, baixada do repositório da Receita na hora do build) e a interface web. Ela responde em uma só porta (`$PORT`, padrão 8000). Foi testada com 512 MB de memória: sobe em cerca de 12 segundos e aguenta os 1.219 casos de teste em sequência. Os limites de memória do Java em `JAVA_OPTS` são necessários: sem eles, o processo era encerrado por falta de memória com carga.
 
 **Render (plano gratuito):**
 1. Crie uma conta em https://render.com e conecte seu GitHub.

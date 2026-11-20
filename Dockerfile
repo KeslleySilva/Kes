@@ -24,7 +24,7 @@ COPY ferramenta /app/ferramenta
 COPY cenarios /app/cenarios
 COPY deploy/iniciar.sh /app/iniciar.sh
 RUN chmod +x /app/iniciar.sh
-ENV PORT=8000 JAVA_OPTS="-XX:MaxRAMPercentage=55 -XX:+UseSerialGC -Xss512k"
+ENV PORT=8000 JAVA_OPTS="-Xmx224m -Xss256k -XX:MaxMetaspaceSize=160m -XX:ReservedCodeCacheSize=64m -XX:MaxDirectMemorySize=32m -XX:+UseSerialGC -XX:TieredStopAtLevel=1"
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=120s \
   CMD python3 -c "import os,urllib.request;urllib.request.urlopen('http://127.0.0.1:%s/api/calculadora/dados-abertos/versao' % os.environ['PORT'])" || exit 1

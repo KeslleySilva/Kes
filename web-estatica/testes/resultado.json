@@ -1,0 +1,7 @@
+{
+  "data": "2026-11-20T00:50:45.548Z",
+  "api": "http://localhost:8100/api/calculadora",
+  "casos": 1219,
+  "identicos": 1219,
+  "falhas": []
+}

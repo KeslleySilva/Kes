@@ -10,7 +10,9 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<
 const brl = (v) => (v === undefined || v === null || v === "" ? "—" : Number(v).toLocaleString("pt-BR", { style: "currency", currency: "BRL" }));
 const pct = (v) => (v === undefined || v === null || v === "" ? "—" : Number(v).toLocaleString("pt-BR", { maximumFractionDigits: 4 }) + "%");
 
+const LOCAL = !!window.RTC_API_LOCAL; // versão web estática: calcula no navegador (web-estatica/)
 async function api(metodo, caminho, corpo, tipo = "application/json") {
+  if (LOCAL) return window.RTC_API_LOCAL(metodo, caminho, corpo);
   const op = { method: metodo, headers: { Accept: "application/json, application/xml, text/plain" } };
   if (corpo !== undefined) {
     op.headers["Content-Type"] = tipo;
@@ -54,7 +56,8 @@ const anoOp = () => Number(dataOp().slice(0, 4));
 async function iniciar() {
   const v = await api("GET", "/dados-abertos/versao").catch(() => null);
   $("#versao").innerHTML = v && v.ok
-    ? `API oficial v${esc(v.dados.versaoApp)} · base ${esc(v.dados.versaoDb)} (${esc(v.dados.dataVersaoDb)})`
+    ? (LOCAL ? `Cálculo no navegador · regras oficiais ${esc(v.dados.versaoDb)} (${esc(v.dados.dataVersaoDb)})`
+             : `API oficial v${esc(v.dados.versaoApp)} · base ${esc(v.dados.versaoDb)} (${esc(v.dados.dataVersaoDb)})`)
     : `<span style="color:var(--erro)">API oficial indisponível — inicie com scripts/instalar_api_oficial.sh</span>`;
 
   const ufs = await api("GET", "/dados-abertos/ufs");
@@ -266,7 +269,7 @@ function renderResultado(r, op) {
       ${mem || memIs ? `<details><summary>Memória de cálculo</summary>${mem}${memIs ? "<br>" + memIs : ""}</details>` : ""}</td></tr>`;
   }
   h += `</tbody></table></div>`;
-  h += `<div class="acoes"><div>
+  h += LOCAL ? `<div class="acoes"><p class="nota">Geração e validação de XML: disponível na versão com a API oficial.</p><button id="baixar" class="sec">Baixar JSON</button></div>` : `<div class="acoes"><div>
       <label class="check">Gerar XML do grupo de tributação para
       <select id="xml-tipo" style="width:auto"><option value="nfe">NF-e</option><option value="nfce">NFC-e</option><option value="cte">CT-e</option>
       <option value="cte-simplificado">CT-e Simplificado</option><option value="bpe">BP-e</option><option value="bpe-tm">BP-e TM</option><option value="nf3e">NF3-e</option></select>
@@ -305,14 +308,16 @@ function ligarXml(op) {
 
 /* ---------------- cenários ---------------- */
 let CENARIOS = [];
+const SUPORTE_LOCAL = /regime-geral$|base-calculo-unificada$|^\/dados-abertos\/(versao|aliquota|ufs|situacoes-tributarias\/cbs-ibs|classificacoes-tributarias\/cbs-ibs\/class-trib|ncm$|nbs$|classificacoes-tributarias\/(ncm|nbs)-aplicavel|classificacoes-tributarias\/nbs$|fundamentacoes|redutores)/;
 async function carregarCenarios() {
-  CENARIOS = await (await fetch("/cenarios.json")).json();
+  CENARIOS = await (await fetch("cenarios.json")).json();
   let h = "", grupo = "";
   for (const c of CENARIOS) {
     if (c.grupo !== grupo) { grupo = c.grupo; h += `<div class="cen-grupo">${esc(grupo)}</div>`; }
     const abrir = c.caminho.endsWith("regime-geral") ? `<button class="sec" data-abrir="${c.id}">Abrir na calculadora</button>` : "";
+    const soServidor = LOCAL && !SUPORTE_LOCAL.test(c.caminho);
     h += `<div class="cen" id="cen-${c.id}"><div class="cen-topo"><div><span class="cen-id">${c.id} · ${c.metodo} ${esc(c.caminho)}</span><br><b>${esc(c.titulo)}</b>
-      <p class="nota">${esc(c.explicacao)}</p></div><div class="bts">${abrir}<button class="pri" data-rodar="${c.id}">Executar</button></div></div>
+      <p class="nota">${esc(c.explicacao)}</p></div><div class="bts">${abrir}${soServidor ? `<span class="selo av">só na versão com servidor</span>` : `<button class="pri" data-rodar="${c.id}">Executar</button>`}</div></div>
       <div class="cen-res"></div></div>`;
   }
   $("#lista-cenarios").innerHTML = h;
@@ -336,7 +341,7 @@ async function rodarCenario(id) {
     (corpo && c.metodo === "POST" ? `<details><summary class="nota">Requisição</summary><pre>${esc(typeof corpo === "string" ? corpo : JSON.stringify(corpo, null, 2))}</pre></details>` : "") +
     `<pre>${esc(typeof r.dados === "string" ? r.dados : JSON.stringify(r.dados, null, 2))}</pre>`;
 }
-$("#rodar-todos").addEventListener("click", async () => { for (const c of CENARIOS) await rodarCenario(c.id); });
+$("#rodar-todos").addEventListener("click", async () => { for (const c of CENARIOS) if (!LOCAL || SUPORTE_LOCAL.test(c.caminho)) await rodarCenario(c.id); });
 
 /* ---------------- base de cálculo ---------------- */
 const CAMPOS_BASE = [
