@@ -38,6 +38,12 @@ NODE_PATH=<pasta com decimal.js> node web-estatica/testes/comparar_com_api.js ht
 
 O que fica só na versão com servidor: XML, pedágio, funções de NFS-e e alguns detalhes de validação de nomenclatura por tipo de documento.
 
+### Simples Nacional e DANFSe (versão web)
+
+- **Simples Nacional:** `web-estatica/motor-simples.js` traduz o cálculo "não assistido" da API oficial [calculadora-rtc-simples-nacional](https://github.com/ReceitaFederal/calculadora-rtc-simples-nacional) (`POST /calculadora/observabilidade/simples-nacional/nao-assistido`). O motor escolhe o anexo, o par de alíquotas com ou sem redistribuição do ISS, aplica o regime de apuração e a compra governamental. Os parâmetros vêm das tabelas oficiais. A comparação com a API v1.0.2 (`web-estatica/testes/comparar_simples_com_api.js`) cobriu 2.289 casos, todos idênticos: documentos com CRT e NFS-e, regimes, atividades, campos do ISS, compra governamental de 2027 a 2033, todas as cClassTribs, nomenclatura e erros.
+- **DANFSe:** `web-estatica/danfse/` traz o próprio gerador oficial [calculadora-rtc-gerador-danfse](https://github.com/ReceitaFederal/calculadora-rtc-gerador-danfse), compilado sem alterações pelo ponto de entrada WebAssembly do projeto (`cmd/danfse-wasm`) e comprimido com gzip. O PDF gerado no navegador é idêntico, byte a byte, ao do serviço HTTP oficial. Para recompilar: `GOOS=js GOARCH=wasm go build -ldflags="-s -w" -o danfse.wasm ./cmd/danfse-wasm` (Go 1.27) e depois `gzip -9`.
+- `web-estatica/exemplos/nfse-exemplo.xml`: NFS-e de exemplo com dados fictícios.
+
 ## Publicar na web (servidor com a API oficial)
 
 O `Dockerfile` monta uma imagem única com a API oficial (Java 25, baixada do repositório da Receita na hora do build) e a interface web. Ela responde em uma só porta (`$PORT`, padrão 8000). Foi testada com 512 MB de memória: sobe em cerca de 12 segundos e aguenta os 1.219 casos de teste em sequência. Os limites de memória do Java em `JAVA_OPTS` são necessários: sem eles, o processo era encerrado por falta de memória com carga.

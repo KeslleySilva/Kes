@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NFS-e de EXEMPLO com dados fictícios (empresas, CNPJs e chave inventados), no leiaute nacional, para testar a geração do DANFSe. -->
+<NFSe versao="1.01" xmlns="http://www.sped.fazenda.gov.br/nfse">
+  <infNFSe Id="NFS35503082212345678000190000000000000126110000001234" situacao="1" qrcode="">
+    <xLocEmi>São Paulo</xLocEmi>
+    <xLocPrestacao>São Paulo</xLocPrestacao>
+    <nNFSe>1234</nNFSe>
+    <cLocIncid>3550308</cLocIncid>
+    <xLocIncid>São Paulo</xLocIncid>
+    <xUFIncid>SP</xUFIncid>
+    <xTribNac>Ensino regular pré-escolar, fundamental e médio.</xTribNac>
+    <xTribMun>Educação infantil</xTribMun>
+    <ambGer>2</ambGer>
+    <cStat>100</cStat>
+    <dhProc>2026-11-20T10:15:30-03:00</dhProc>
+    <emit>
+      <CNPJ>12345678000190</CNPJ>
+      <IM>12345678</IM>
+      <xNome>ESCOLA EXEMPLO DE EDUCACAO INFANTIL LTDA</xNome>
+      <xFant>Escola Exemplo</xFant>
+      <enderNac>
+        <xLgr>Rua das Flores</xLgr>
+        <nro>100</nro>
+        <xBairro>Centro</xBairro>
+        <cMun>3550308</cMun>
+        <UF>SP</UF>
+        <CEP>01001000</CEP>
+      </enderNac>
+      <fone>11999990000</fone>
+      <email>contato@exemplo.com.br</email>
+    </emit>
+    <valores>
+      <vBC>1200.00</vBC>
+      <pAliqAplic>2.00</pAliqAplic>
+      <vISSQN>24.00</vISSQN>
+      <vTotalRet>0.00</vTotalRet>
+      <vLiq>1200.00</vLiq>
+    </valores>
+    <IBSCBS>
+      <xLocalidadeIncid>São Paulo</xLocalidadeIncid>
+      <uf>SP</uf>
+      <cLocalidadeIncid>3550308</cLocalidadeIncid>
+      <valores>
+        <vBC>1200.00</vBC>
+        <uf><pIBSUF>0.10</pIBSUF><pRedAliqUF>60.00</pRedAliqUF><pAliqEfetUF>0.04</pAliqEfetUF></uf>
+        <mun><pIBSMun>0.00</pIBSMun><pRedAliqMun>60.00</pRedAliqMun><pAliqEfetMun>0.00</pAliqEfetMun></mun>
+        <fed><pCBS>0.90</pCBS><pRedAliqCBS>60.00</pRedAliqCBS><pAliqEfetCBS>0.36</pAliqEfetCBS></fed>
+      </valores>
+      <totCIBS>
+        <vTotNF>1200.00</vTotNF>
+        <gIBS><vIBSTot>0.48</vIBSTot><gIBSUFTot><vIBSUF>0.48</vIBSUF></gIBSUFTot><gIBSMunTot><vIBSMun>0.00</vIBSMun></gIBSMunTot></gIBS>
+        <gCBS><vCBS>4.32</vCBS></gCBS>
+      </totCIBS>
+    </IBSCBS>
+    <DPS versao="1.01">
+      <infDPS Id="DPS355030821234567800019000001000000000001234">
+        <tpAmb>2</tpAmb>
+        <dhEmi>2026-11-20T10:00:00-03:00</dhEmi>
+        <serie>1</serie>
+        <nDPS>1234</nDPS>
+        <dCompet>2026-11-20</dCompet>
+        <tpEmit>1</tpEmit>
+        <cLocEmi>3550308</cLocEmi>
+        <prest>
+          <CNPJ>12345678000190</CNPJ>
+          <regTrib><opSimpNac>1</opSimpNac><regEspTrib>0</regEspTrib></regTrib>
+        </prest>
+        <toma>
+          <CPF>12345678909</CPF>
+          <xNome>MARIA EXEMPLO DA SILVA</xNome>
+          <end>
+            <endNac><cMun>3550308</cMun><CEP>01310100</CEP></endNac>
+            <xLgr>Avenida Paulista</xLgr>
+            <nro>1000</nro>
+            <xCpl>Apto 51</xCpl>
+            <xBairro>Bela Vista</xBairro>
+          </end>
+          <email>maria@exemplo.com.br</email>
+        </toma>
+        <serv>
+          <locPrest><cLocPrestacao>3550308</cLocPrestacao></locPrest>
+          <cServ>
+            <cTribNac>080101</cTribNac>
+            <cTribMun>001</cTribMun>
+            <xDescServ>Mensalidade escolar de educação infantil - novembro/2026</xDescServ>
+            <cNBS>122011200</cNBS>
+          </cServ>
+          <infoCompl><xInfComp>Documento de exemplo com dados fictícios.</xInfComp></infoCompl>
+        </serv>
+        <valores>
+          <vServPrest><vServ>1200.00</vServ></vServPrest>
+          <trib>
+            <tribMun><tribISSQN>1</tribISSQN><tpRetISSQN>1</tpRetISSQN><pAliq>2.00</pAliq></tribMun>
+            <totTrib><vTotTrib><vTotTribFed>4.32</vTotTribFed><vTotTribEst>0.48</vTotTribEst><vTotTribMun>24.00</vTotTribMun></vTotTrib></totTrib>
+          </trib>
+        </valores>
+        <IBSCBS>
+          <finNFSe>0</finNFSe>
+          <cIndOp>030101</cIndOp>
+          <valores><trib><gIBSCBS><CST>200</CST><cClassTrib>200028</cClassTrib></gIBSCBS></trib></valores>
+        </IBSCBS>
+      </infDPS>
+    </DPS>
+  </infNFSe>
+</NFSe>

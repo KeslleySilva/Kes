@@ -1,6 +1,6 @@
 {
-  "data": "2026-11-20T00:50:45.548Z",
-  "api": "http://localhost:8100/api/calculadora",
+  "data": "2026-11-23T11:34:19.645Z",
+  "api": "http://localhost:8080/api/calculadora",
   "casos": 1219,
   "identicos": 1219,
   "falhas": []

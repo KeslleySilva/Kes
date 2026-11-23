@@ -4,7 +4,7 @@
 <header class="topo">
   <div>
     <h1>Calculadora da Reforma Tributária</h1>
-    <p class="sub">CBS, IBS e Imposto Seletivo (LC 214/2025), regime regular, com as regras e tabelas oficiais da calculadora da Receita Federal, calculado no seu navegador</p>
+    <p class="sub">CBS, IBS e Imposto Seletivo (LC 214/2025) no regime regular e no Simples Nacional, e geração do DANFSe, com as regras e ferramentas oficiais da Receita Federal, rodando no seu navegador</p>
   </div>
   <div id="versao" class="versao">conectando…</div>
 </header>
@@ -145,9 +145,17 @@
 </template>
 
 <div class="rodape nota">
-  O cálculo usa as fórmulas e tabelas oficiais do repositório <b>ReceitaFederal/calculadora-rtc-regime-regular</b> (base de regras V0073, 09/11/2026), traduzidas para rodar no navegador e conferidas com a API oficial v1.7.2 em 1.219 casos, todos com resultado idêntico. Monofasia de combustíveis e outros 16 tratamentos ainda não são calculados nem pela calculadora oficial. Geração de XML, pedágio e funções de NFS-e ficam na versão com servidor. O resultado é uma simulação de apoio e não substitui a apuração oficial.
+  Tudo é calculado no seu navegador, com as regras e tabelas oficiais dos três repositórios da Receita Federal (base de regras V0073, de 09/11/2026):
+  <b>calculadora-rtc-regime-regular</b> (conferido com a API oficial v1.7.2 em 1.219 casos), <b>calculadora-rtc-simples-nacional</b> (conferido com a API v1.0.2 em 2.289 casos) e <b>calculadora-rtc-gerador-danfse</b> (o próprio gerador oficial compilado para o navegador, com PDF idêntico ao do serviço). Em todos os casos o resultado foi idêntico ao oficial.
+  Monofasia de combustíveis e outros 16 tratamentos ainda não são calculados nem pela calculadora oficial. Geração de XML, pedágio e funções de NFS-e do regime regular ficam na versão com servidor. Os resultados são simulação de apoio e não substituem a apuração oficial.
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
 <script src="motor.js"></script>
+<script src="motor-simples.js"></script>
 <script src="api-local.js"></script>
+<script src="danfse/wasm_exec.js"></script>
+<script src="danfse.js"></script>
 <script src="app.js"></script>
+<script src="abas-extras.js"></script>

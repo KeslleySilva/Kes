@@ -34,7 +34,7 @@ def main(db):
         "classificacoes": linhas(c, """select CLTR_ID id, CLTR_CD cd, CLTR_DESCRICAO descricao, CLTR_MEMORIA_CALCULO memoria, CLTR_SITR_ID sitr,
                 CLTR_TIPO_ALIQUOTA tipoAliquota, CLTR_NOMENCLATURA nomenclatura, CLTR_INICIO_VIGENCIA ini, CLTR_FIM_VIGENCIA fim,
                 CLTR_IN_APROPRIACAO_CREDITOS_ADQUIRENTES_CBS credCbs, CLTR_IN_APROPRIACAO_CREDITOS_ADQUIRENTES_IBS credIbs,
-                CLTR_CREDITO_OPERACAO_ANTECEDENTE credAnt, CLTR_DATA_ATUALIZACAO atualizacao
+                CLTR_CREDITO_OPERACAO_ANTECEDENTE credAnt, CLTR_DATA_ATUALIZACAO atualizacao, CLTR_TPRBSN tprbsn
                 from CLASSIFICACAO_TRIBUTARIA"""),
         "tratamentos": linhas(c, "select * from TRATAMENTO_TRIBUTARIO"),
         "tratClass": linhas(c, "select TRCL_CLTR_ID cl, TRCL_TRTR_ID tr, TRCL_INICIO_VIGENCIA ini, TRCL_FIM_VIGENCIA fim from TRATAMENTO_CLASSIFICACAO"),
@@ -53,6 +53,16 @@ def main(db):
         "ufs": linhas(c, "select UF_CD codigo, UF_SIGLA sigla, UF_NOME nome from UF order by UF_CD"),
         "nbs": linhas(c, "select NBS_CD cd, NBS_DESCRICAO descricao, NBS_INICIO_VIGENCIA ini, NBS_FIM_VIGENCIA fim from NBS"),
         "aliqClass": linhas(c, "select AADV_CLTR_ID cl, AADV_TBTO_ID tb, AADV_VALOR v, AADV_INICIO_VIGENCIA ini, AADV_FIM_VIGENCIA fim from ALIQUOTA_AD_VALOREM where AADV_CLTR_ID is not null"),
+        "sn": {
+            "atividades": linhas(c, "select * from ATIVIDADE_SIMPLES_NACIONAL"),
+            "dfeAtividade": linhas(c, "select TDAS_ATSN_ID at, TDAS_TPDF_ID tp, TDAS_INICIO_VIGENCIA ini, TDAS_FIM_VIGENCIA fim from TIPO_DFE_ATIVIDADE_SIMPLES_NACIONAL"),
+            "tiposReceita": linhas(c, "select * from TIPO_RECEITA_BRUTA_SIMPLES_NACIONAL"),
+            "dfeCalculo": linhas(c, "select * from TIPO_DFE_CALCULO_SIMPLES_NACIONAL"),
+            "transicaoCompraGov": linhas(c, "select TACG_FATOR v, TACG_INICIO_VIGENCIA ini, TACG_FIM_VIGENCIA fim from TRANSICAO_ALIQUOTA_COMPRA_GOV_SIMPLES_NACIONAL"),
+            "regimes": linhas(c, "select * from REGIME_APURACAO_SIMPLES_NACIONAL"),
+            "enquadramentos": linhas(c, "select * from ENQUADRAMENTO_REGIME_SIMPLES_NACIONAL"),
+            "situacoesIss": linhas(c, "select * from SITUACAO_ISS_PAR_ALIQUOTA_SIMPLES_NACIONAL order by SIPA_ORDEM, SIPA_ID"),
+        },
         "isNcm": [r["ncm"] for r in linhas(c, "select distinct AAVP_NCM_CD ncm from ALIQUOTA_AD_VALOREM_PRODUTO union select AARP_NCM_CD from ALIQUOTA_AD_REM_PRODUTO")],
     }
     ncm = linhas(c, "select NCM_CD cd, NCM_DESCRICAO d, NCM_INICIO_VIGENCIA ini, NCM_FIM_VIGENCIA fim from NCM")

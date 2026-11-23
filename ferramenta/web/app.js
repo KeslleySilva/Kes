@@ -84,7 +84,7 @@ $("#op-uf").addEventListener("change", () => carregarMunicipios());
 $("#op-ente").addEventListener("change", (e) => { $("#lbl-operGov").hidden = !e.target.value; });
 $("#op-data").addEventListener("change", async () => {
   atualizarAno();
-  for (const el of $$(".item")) await preencherCst(el, $(".i-cst", el).value, $(".i-ct", el).value);
+  for (const el of $$("#itens .item")) await preencherCst(el, $(".i-cst", el).value, $(".i-ct", el).value);
 });
 function atualizarAno() {
   const ano = anoOp();
@@ -128,7 +128,7 @@ async function adicionarItem(d) {
   atualizarAno();
   await preencherCst(el, d.cst || "000", d.cClassTrib || "000001");
 }
-function renumerar() { $$(".item").forEach((el, i) => ($(".item-num", el).textContent = "Item " + (i + 1))); }
+function renumerar() { $$("#itens .item").forEach((el, i) => ($(".item-num", el).textContent = "Item " + (i + 1))); }
 
 async function preencherCst(el, cst, ct) {
   const arv = await arvoreCst(dataOp());
@@ -159,7 +159,7 @@ function montarOperacao() {
   };
   if ($("#op-tpdoc").value) op.tpDoc = Number($("#op-tpdoc").value);
   if ($("#op-ente").value) op.gCompraGov = { tpEnteGov: Number($("#op-ente").value), tpOperGov: Number($("#op-operGov").value) };
-  op.itens = $$(".item").map((el, i) => {
+  op.itens = $$("#itens .item").map((el, i) => {
     const it = { numero: i + 1, cst: $(".i-cst", el).value, cClassTrib: $(".i-ct", el).value };
     const cod = $(".i-cod", el).value.trim();
     if (cod) it[$(".i-tipo", el).value] = cod;
@@ -285,8 +285,10 @@ const rawHtml = (env, rec) => `<details><summary class="nota">Ver JSON enviado e
 function ligarXml(op) {
   const bx = $("#baixar");
   if (bx) bx.addEventListener("click", () => {
+    const conteudo = JSON.stringify({ entrada: op, saida: window.__ultimo }, null, 2);
+    if (window.RTCSalvarArquivo) { window.RTCSalvarArquivo("calculo-rtc.json", conteudo); return; }
     const a = document.createElement("a");
-    a.href = URL.createObjectURL(new Blob([JSON.stringify({ entrada: op, saida: window.__ultimo }, null, 2)], { type: "application/json" }));
+    a.href = URL.createObjectURL(new Blob([conteudo], { type: "application/json" }));
     a.download = "calculo-rtc.json"; a.click();
   });
   const bt = $("#xml-gerar");
