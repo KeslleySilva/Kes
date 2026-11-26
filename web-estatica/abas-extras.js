@@ -87,6 +87,145 @@
       <div id="df-preview"></div>
     </div>`);
 
+  /* ---------- Buscar por descrição (CNAE, NCM, NBS, cClassTrib) ---------- */
+  novaAba("busca", "Buscar por descrição", `
+    <div class="cartao">
+      <h2>Buscar por descrição do produto ou serviço</h2>
+      <p class="nota">Dica: as tabelas usam termos técnicos; se não encontrar, tente sinônimos (ex.: <i>sacos plásticos</i> em vez de <i>sacola</i>). Digite o que você vende ou presta (ex.: <i>sacola plástica</i>, <i>máquina para plástico</i>, <i>educação infantil</i>, <i>arroz</i>). A busca procura nas tabelas oficiais de CNAE (IBGE), NCM, NBS e cClassTrib. O cálculo usa NCM para bens e NBS para serviços; o CNAE serve para identificar a atividade.</p>
+      <div class="grade"><label style="grid-column:1/-1">Descrição<input id="bq-texto" placeholder="ex.: sacola plástica" autocomplete="off"></label></div>
+      <div class="acoes"><span class="nota" id="bq-status"></span><button id="bq-buscar" class="pri">Buscar</button></div>
+    </div>
+    <div id="bq-res"></div>`);
+
+  nav.insertBefore(nav.querySelector('[data-aba="busca"]'), nav.querySelector('[data-aba="simples"]'));
+  let BQ = null;
+  const semAcento = (s) => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  // texto de busca: sem acento, só letras/dígitos separados por espaço, com espaço inicial (casa início de palavra)
+  const textoBusca = (t) => " " + semAcento(t).replace(/[^a-z0-9]+/g, " ");
+  async function carregarBusca() {
+    if (BQ) return BQ;
+    $("#bq-status").textContent = "Carregando tabelas…";
+    const j = (u) => fetch(u).then((r) => r.json());
+    const [cnae, ncm, R] = await Promise.all([j("dados/cnae.json"), j("dados/ncm.json"), j("dados/regras.json")]);
+    const hoje = new Date().toISOString().slice(0, 10);
+    const vig = (ini, fim, d) => String(ini).slice(0, 10) <= d && (!fim || String(fim).slice(0, 10) >= d);
+    // NCM: descrição completa = cadeia de ancestrais (capítulo > posição > subposição > item)
+    const descNcm = new Map(ncm.filter((x) => vig(x[2], x[3], hoje)).map((x) => [x[0], String(x[1]).replace(/<\/?[a-z]+>/gi, "")]));
+    const ncms = [...descNcm.keys()].filter((c) => c.length === 8).map((c) => {
+      const cadeia = [2, 4, 5, 6, 7].map((n) => descNcm.get(c.slice(0, n))).filter(Boolean);
+      return { cod: c, desc: descNcm.get(c), cadeia, busca: textoBusca(cadeia.join(" ") + " " + descNcm.get(c)), propria: textoBusca(descNcm.get(c)) };
+    });
+    const descNbs = new Map(R.nbs.filter((x) => vig(x.ini, x.fim, hoje)).map((x) => [x.cd, x.descricao]));
+    const nbss = [...descNbs.keys()].filter((c) => c.length === 9).map((c) => {
+      const cadeia = [3, 5, 6, 7, 8].map((n) => descNbs.get(c.slice(0, n))).filter((d, i, a) => d && a.indexOf(d) === i);
+      return { cod: c, desc: descNbs.get(c), cadeia, busca: textoBusca(cadeia.join(" ") + " " + descNbs.get(c)), propria: textoBusca(descNbs.get(c)) };
+    });
+    const sit = new Map(R.situacoes.map((s) => [s.id, s]));
+    const cts = R.classificacoes.filter((c) => vig(c.ini, c.fim, hoje) && String((sit.get(c.sitr) || {}).tributos || "").split(",").includes("2"))
+      .map((c) => ({ cod: c.cd, cst: (sit.get(c.sitr) || {}).cd, desc: c.descricao, id: c.id, busca: textoBusca(c.descricao) }));
+    const ctPorId = new Map(cts.map((c) => [c.id, c]));
+    const cnaes = cnae.map((x) => ({ cod: x[0], desc: x[1], classe: x[2], divisao: x[3], secao: x[4], atividades: x[5], compreende: x[6], nao: x[7],
+      propria: textoBusca(x[1]), ativ: textoBusca(x[5].join(" | ")), obs: textoBusca(x[6]) }));
+    // classificações com anexo que alcançam uma NCM/NBS (ex.: cesta básica, reduções do Anexo)
+    const classifNcm = (cod) => {
+      const out = new Map();
+      for (const n of R.ncmAplicavel) {
+        if (!vig(n.ini, n.fim, hoje) || !cod.startsWith(n.ncm)) continue;
+        if (R.excecaoNcm.some((e) => e.ncma === n.id && cod.startsWith(e.ncm) && vig(e.ini, e.fim, hoje))) continue;
+        const c = ctPorId.get(n.cl); if (c) out.set(c.cod, c);
+      }
+      return [...out.values()];
+    };
+    const classifNbs = (cod) => {
+      const out = new Map();
+      for (const n of R.nbsAplicavel) { if (vig(n.ini, n.fim, hoje) && cod.startsWith(n.nbs)) { const c = ctPorId.get(n.cl); if (c) out.set(c.cod, c); } }
+      return [...out.values()];
+    };
+    $("#bq-status").textContent = "";
+    BQ = { ncms, nbss, cts, cnaes, classifNcm, classifNbs, isNcm: new Set(R.isNcm) };
+    return BQ;
+  }
+
+  function pontuar(itens, palavras, campos) {
+    const out = [];
+    for (const it of itens) {
+      let s = 0;
+      for (const [campo, peso] of campos) { const t = it[campo]; if (t && palavras.every((w) => t.includes(" " + w))) { s = peso; break; } }
+      if (s) out.push([s, it]);
+    }
+    return out.sort((a, b) => b[0] - a[0] || a[1].cod.localeCompare(b[1].cod)).map((x) => x[1]);
+  }
+
+  async function usarNaCalculadora({ ncm, nbs, cst, ct }) {
+    abrirAba("calc");
+    const el = document.querySelector("#itens .item");
+    if (!el) return;
+    if (ncm || nbs) {
+      el.querySelector(".i-tipo").value = ncm ? "ncm" : "nbs";
+      el.querySelector(".i-tipo").dispatchEvent(new Event("change"));
+      el.querySelector(".i-cod").value = ncm || nbs;
+    }
+    if (cst && ct) {
+      el.querySelector(".i-cst").value = cst;
+      el.querySelector(".i-cst").dispatchEvent(new Event("change"));
+      for (let i = 0; i < 40 && ![...el.querySelector(".i-ct").options].some((o) => o.value === ct); i++) await new Promise((r) => setTimeout(r, 50));
+      el.querySelector(".i-ct").value = ct;
+      el.querySelector(".i-ct").dispatchEvent(new Event("change"));
+    }
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  async function buscar() {
+    const q = $("#bq-texto").value.trim();
+    // radical simples: tolera plural e gênero (plástica/plásticos, máquina/máquinas)
+    const radical = (w) => (w.length > 4 ? w.replace(/(oes|aes|ais|eis|as|os|es|a|o|e|s)$/, "") : w);
+    const palavras = semAcento(q).split(/\s+/).filter((w) => w.length > 1 && !["de", "da", "do", "das", "dos", "para", "com", "em", "e"].includes(w)).map(radical);
+    if (!palavras.length) { $("#bq-res").innerHTML = ""; return; }
+    const B = await carregarBusca();
+    const LIM = 15;
+    const rCnae = pontuar(B.cnaes, palavras, [["propria", 3], ["ativ", 2], ["obs", 1]]);
+    const rNcm = pontuar(B.ncms, palavras, [["propria", 2], ["busca", 1]]);
+    const rNbs = pontuar(B.nbss, palavras, [["propria", 2], ["busca", 1]]);
+    const rCt = pontuar(B.cts, palavras, [["busca", 1]]);
+    const bloco = (titulo, total, linhas, nota) => `<div class="cartao"><h2>${titulo} <span class="nota">${total ? total + " encontrado(s)" + (total > LIM ? `, mostrando ${LIM}` : "") : "nenhum resultado"}</span></h2>${nota ? `<p class="nota">${nota}</p>` : ""}${linhas}</div>`;
+    const chips = (lista) => lista.length ? `<div style="margin-top:6px">${lista.map((c) => `<button class="sec bq-ct" data-cst="${c.cst}" data-ct="${c.cod}" title="Usar esta classificação na calculadora" style="padding:3px 8px;font-size:12.5px;margin:2px 4px 2px 0">${c.cod} – ${esc(c.desc.slice(0, 60))}</button>`).join("")}</div>` : "";
+    const marca = (txt) => {
+      const chars = [...String(txt || "")];
+      const norm = chars.map((c) => { const n = semAcento(c); return n.length === 1 ? n : c.toLowerCase(); }).join("");
+      const on = new Array(chars.length).fill(false);
+      for (const w of palavras) { let i = norm.indexOf(w); while (i >= 0) { if (i === 0 || !/[a-z0-9]/.test(norm[i - 1])) for (let k = i; k < i + w.length; k++) on[k] = true; i = norm.indexOf(w, i + 1); } }
+      let h = "", aberto = false;
+      chars.forEach((c, k) => { if (on[k] && !aberto) { h += "<mark>"; aberto = true; } if (!on[k] && aberto) { h += "</mark>"; aberto = false; } h += esc(c); });
+      return aberto ? h + "</mark>" : h;
+    };
+    let h = "";
+    h += bloco("CNAE (atividade econômica)", rCnae.length, rCnae.slice(0, LIM).map((c) => {
+      const ativ = c.atividades.filter((a) => palavras.every((w) => textoBusca(a).includes(" " + w))).slice(0, 4);
+      return `<div class="cen"><div class="cen-topo"><div><span class="cen-id">${esc(c.cod)} · ${esc(c.secao)}</span><br><b>${marca(c.desc)}</b>
+        <p class="nota">Classe: ${esc(c.classe)} · Divisão: ${esc(c.divisao)}</p>
+        ${ativ.length ? `<p class="nota">Atividades do índice IBGE: ${ativ.map(marca).join("; ")}</p>` : ""}</div></div>
+        ${c.compreende || c.nao ? `<details><summary class="nota">O que compreende e o que não compreende</summary><pre>${esc([c.compreende, c.nao].filter(Boolean).join("\n\n"))}</pre></details>` : ""}</div>`;
+    }).join(""), "Fonte: IBGE/CONCLA, CNAE 2.3. O CNAE identifica a atividade, mas não entra no cálculo do IBS e da CBS.");
+    h += bloco("NCM (mercadorias)", rNcm.length, rNcm.slice(0, LIM).map((n) => {
+      const cls = B.classifNcm(n.cod);
+      return `<div class="cen"><div class="cen-topo"><div><span class="cen-id">NCM ${n.cod.replace(/^(\d{4})(\d{2})(\d{2})$/, "$1.$2.$3")}</span>${B.isNcm.has(n.cod) ? ' <span class="selo av">sujeita ao Imposto Seletivo</span>' : ""}<br><b>${marca(n.desc)}</b>
+        <p class="nota">${n.cadeia.map(marca).join(" › ")}</p></div><div class="bts"><button class="pri bq-usar" data-ncm="${n.cod}">Usar na calculadora</button></div></div>
+        ${cls.length ? `<p class="nota" style="margin-top:6px">Classificações com tratamento específico que alcançam esta NCM:</p>${chips(cls)}` : `<p class="nota">Nenhum anexo de redução ou tratamento específico alcança esta NCM; em regra, tributação integral (CST 000, cClassTrib 000001).</p>`}</div>`;
+    }).join(""));
+    h += bloco("NBS (serviços)", rNbs.length, rNbs.slice(0, LIM).map((n) => {
+      const cls = B.classifNbs(n.cod);
+      return `<div class="cen"><div class="cen-topo"><div><span class="cen-id">NBS ${n.cod.replace(/^(\d)(\d{4})(\d{2})(\d{2})$/, "$1.$2.$3.$4")}</span><br><b>${marca(n.desc)}</b>
+        <p class="nota">${n.cadeia.map(marca).join(" › ")}</p></div><div class="bts"><button class="pri bq-usar" data-nbs="${n.cod}">Usar na calculadora</button></div></div>
+        ${cls.length ? `<p class="nota" style="margin-top:6px">Classificações com tratamento específico que alcançam esta NBS:</p>${chips(cls)}` : `<p class="nota">Nenhum anexo de redução ou tratamento específico alcança esta NBS; em regra, tributação integral (CST 000, cClassTrib 000001).</p>`}</div>`;
+    }).join(""));
+    h += bloco("Classificação tributária (cClassTrib)", rCt.length, `<div>${chips(rCt.slice(0, LIM))}</div>`);
+    $("#bq-res").innerHTML = h;
+    $$("#bq-res .bq-usar").forEach((b) => b.addEventListener("click", () => usarNaCalculadora({ ncm: b.dataset.ncm, nbs: b.dataset.nbs })));
+    $$("#bq-res .bq-ct").forEach((b) => b.addEventListener("click", () => usarNaCalculadora({ cst: b.dataset.cst, ct: b.dataset.ct })));
+  }
+  $("#bq-buscar").addEventListener("click", buscar);
+  $("#bq-texto").addEventListener("keydown", (e) => { if (e.key === "Enter") buscar(); });
+
   /* ---------- Simples Nacional ---------- */
   let motorSN = null;
   const prontoSN = (async () => {
